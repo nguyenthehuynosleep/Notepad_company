@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <button id="addCircleButton">Thêm hình tròn</button>
+    <div>
+        <form id="shapeForm">
+            <select id="shapeSelect">
+                <option value="circle">Hình tròn</option>
+                <option value="square">Hình vuông</option>
+                <option value="triangle">Hình tam giác</option>
+                <option value="rectangle">Hình chữ nhật</option>
+                <!-- Add more shape options as needed -->
+            </select>
+            <button id="addShapeButton">Thêm hình</button>
+        </form>
+    </div>
+    <button id="unSelectButton">unSelectButton</button>
+    <button id="deleteObjectButton">deleteObjectButton</button>
+    <button id="showTextButton">hideText</button>
+    <input type="file" id="fileUpload" accept="image/*" />
+    <input type="file" id="videoInput" accept="video/*">
+    <text>connecting object</text>
+    <script src="https://unpkg.com/fabric@latest/dist/fabric.js" crossorigin></script>
+    <!-- <script type='text/javascript' src='assets/js/fabric-touch.js'></script> -->
+    <script src="js/shapes.fabric.js"></script>
+    <script src="your-script.js"></script>
+</body>
+
+</html>

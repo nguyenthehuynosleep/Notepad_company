@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Drawing Canvas</title>
+    <!-- Load Fabric.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+</head>
+
+<body>
+    <h1>Drawing Canvas</h1>
+
+    <!-- Canvas element -->
+    <canvas id="canvas" width="800" height="500" style="border: 1px solid #ccc;"></canvas>
+
+    <!-- Buttons and controls -->
+    <div>
+        <button id="drawButton">Start Drawing</button>
+        <button id="eraseButton">Start Erasing</button>
+        <label for="brushColorPicker">Brush Color:</label>
+        <input type="color" id="brushColorPicker" value="#000000">
+        <label for="brushWidthRange">Brush Width:</label>
+        <input type="range" id="brushWidthRange" min="1" max="100" value="5">
+        <button id="clearButton">Clear Canvas</button>
+    </div>
+
+    <!-- JavaScript for drawing functionality -->
+    <script>
+        var canvas = new fabric.Canvas("canvas");
+        var isDrawing = false;
+        var isErasing = false;
+
+        function enableDrawingMode() {
+            isDrawing = true;
+            isErasing = false;
+            canvas.isDrawingMode = true;
+            canvas.freeDrawingBrush.color = document.getElementById("brushColorPicker").value;
+        }
+
+        function enableErasingMode() {
+            isDrawing = false;
+            isErasing = true;
+            canvas.isDrawingMode = true;
+            canvas.freeDrawingBrush.color = "#ffffff"; // Set brush color to white for erasing
+        }
+
+        function disableDrawingAndErasingModes() {
+            isDrawing = false;
+            isErasing = false;
+            canvas.isDrawingMode = false;
+        }
+
+        var drawButton = document.getElementById("drawButton");
+        drawButton.addEventListener("click", function () {
+            if (!isDrawing) {
+                enableDrawingMode();
+                drawButton.textContent = "Stop Drawing";
+                eraseButton.textContent = "Start Erasing";
+            } else {
+                disableDrawingAndErasingModes();
+                drawButton.textContent = "Start Drawing";
+            }
+        });
+
+        var eraseButton = document.getElementById("eraseButton");
+        eraseButton.addEventListener("click", function () {
+            if (!isErasing) {
+                enableErasingMode();
+                eraseButton.textContent = "Stop Erasing";
+                drawButton.textContent = "Start Drawing";
+            } else {
+                disableDrawingAndErasingModes();
+                eraseButton.textContent = "Start Erasing";
+            }
+        });
+
+        canvas.freeDrawingBrush.width = 5;
+        canvas.freeDrawingBrush.color = "#000000";
+
+        var brushColorPicker = document.getElementById("brushColorPicker");
+        brushColorPicker.addEventListener("change", function () {
+            if (isDrawing) {
+                canvas.freeDrawingBrush.color = this.value;
+            }
+        });
+
+        var brushWidthRange = document.getElementById("brushWidthRange");
+        brushWidthRange.addEventListener("input", function () {
+            if (isDrawing || isErasing) {
+                canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+            }
+        });
+
+        var clearButton = document.getElementById("clearButton");
+        clearButton.addEventListener("click", function () {
+            canvas.clear();
+        });
+    </script>
+</body>
+
+</html>

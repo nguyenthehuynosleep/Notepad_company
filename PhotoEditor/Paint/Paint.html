@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Fabric.js Example</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.0/fabric.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <canvas id="c1" width="400" height="400" style="border:1px solid #ccc;"></canvas>
+  <button id="addCircle">Add Circle</button>
+  <button id="removeSelected">Remove Selected</button>
+
+  <script>
+    (function() {
+      var canvas = new fabric.Canvas('c1');
+      canvas.selectionColor = 'rgba(0,255,0,0.3)';
+      canvas.selectionBorderColor = 'red';
+      canvas.selectionLineWidth = 5;
+
+      $("#addCircle").on("click", function(e) {
+        var circle = new fabric.Circle({
+          radius: 30,
+          fill: '#f55',
+          top: fabric.util.getRandomInt(0, 300),
+          left: fabric.util.getRandomInt(0, 300),
+        });
+
+        canvas.add(circle);
+      });
+
+      $("#removeSelected").on("click", function(e) {
+        var activeObject = canvas.getActiveObject();
+        if (activeObject) {
+          canvas.remove(activeObject);
+          canvas.discardActiveObject();
+          canvas.renderAll();
+        }
+      });
+
+      canvas.on("object:scaling", function(e) {
+        var obj = e.target;
+        obj.set({
+          width: obj.width * obj.scaleX,
+          height: obj.height * obj.scaleY,
+          scaleX: 1,
+          scaleY: 1,
+        });
+      });
+
+      canvas.on("mouse:over", function(e) {
+        var obj = e.target;
+        if (obj && obj.type === "circle") {
+          obj.set({
+            fill: "red",
+          });
+          canvas.renderAll();
+        }
+      });
+
+      canvas.on("mouse:out", function(e) {
+        var obj = e.target;
+        if (obj && obj.type === "circle") {
+          obj.set({
+            fill: '#f55',
+          });
+          canvas.renderAll();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

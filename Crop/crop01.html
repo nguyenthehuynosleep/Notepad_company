@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #container {
+      position: relative;
+    }
+
+    #croppedCanvas {
+      border: 1px solid #ccc;
+    }
+
+    #cropRect {
+      position: absolute;
+      border: 1px solid red;
+      pointer-events: none;
+    }
+  </style>
+  <title>Image Cropping Tool</title>
+</head>
+<body>
+  <input type="file" id="imageInput" accept="image/*">
+  
+  <div id="container">
+    <canvas id="croppedCanvas" width="400" height="300"></canvas>
+    <div id="cropRect"></div>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const croppedCanvas = document.getElementById('croppedCanvas');
+
+
+    
+    const ctx = croppedCanvas.getContext('2d');
+    const container = document.getElementById('container');
+    const cropRect = document.getElementById('cropRect');
+    let isCropping = false;
+    let startX, startY, endX, endY;
+
+
+    imageInput.addEventListener('change', handleImageSelect);
+    container.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    function handleImageSelect(event) {
+      const file = event.target.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const img = new Image();
+          img.onload = function () {
+            drawImage(img);
+          };
+          img.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+    function drawImage(img) {
+      ctx.clearRect(0, 0, croppedCanvas.width, croppedCanvas.height);
+      ctx.drawImage(img, 0, 0, croppedCanvas.width, croppedCanvas.height);
+    }
+
+    function handleMouseDown(event) {
+      isCropping = true;
+      startX = event.clientX - croppedCanvas.getBoundingClientRect().left;
+      startY = event.clientY - croppedCanvas.getBoundingClientRect().top;
+
+      cropRect.style.width = '0';
+      cropRect.style.height = '0';
+      cropRect.style.left = startX + 'px';
+      cropRect.style.top = startY + 'px';
+
+      cropRect.style.display = 'block';
+    }
+
+    function handleMouseMove(event) {
+      if (isCropping) {
+        endX = event.clientX - croppedCanvas.getBoundingClientRect().left;
+        endY = event.clientY - croppedCanvas.getBoundingClientRect().top;
+
+        const width = endX - startX;
+        const height = endY - startY;
+
+        cropRect.style.width = width + 'px';
+        cropRect.style.height = height + 'px';
+      }
+    }
+
+    function handleMouseUp() {
+      if (isCropping) {
+        isCropping = false;
+
+        const croppedResultCanvas = document.createElement('canvas');
+        const resultCtx = croppedResultCanvas.getContext('2d');
+
+        // Vẽ dữ liệu hình ảnh đã cắt lên canvas mới
+        const croppedWidth = endX - startX;
+        const croppedHeight = endY - startY;
+        croppedResultCanvas.width = croppedWidth;
+        croppedResultCanvas.height = croppedHeight;
+        const imgData = ctx.getImageData(startX, startY, croppedWidth, croppedHeight);
+        resultCtx.putImageData(imgData, 0, 0);
+        const shouldSave = window.confirm("Do you want to save the image?");
+        // (Tuỳ chọn) Hiển thị canvas mới hoặc thực hiện các hành động khác
+        // Ví dụ: thêm canvas mới vào body
+        if(shouldSave){
+          croppedResultCanvas.toBlob(function (blob) {
+        // Tạo một URL tạm thời cho Blob
+        const blobUrl = URL.createObjectURL(blob);
+
+        // Tạo một liên kết tải xuống và kích hoạt nó
+        const downloadLink = document.createElement('a');
+        downloadLink.href = blobUrl;
+        downloadLink.download = 'cropped_image.png';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+
+        // Giải phóng tài nguyên
+        URL.revokeObjectURL(blobUrl);
+        document.body.removeChild(downloadLink);
+      });
+    }
+    // Hide cropRect
+    cropRect.style.display = 'none';
+    }
+  }
+    
+  </script>
+</body>
+</html>

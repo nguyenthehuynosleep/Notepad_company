@@ -1,0 +1,77 @@
+.header{
+    background-color: rgb(33, 32, 32);
+
+}
+.list-button{
+    display: flex;
+    color: white;
+    align-items: center; /* Căn giữa theo chiều ngang */
+}
+
+.btn-tool{
+    margin-left: 30px;
+    background-color: none;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+}
+
+.list{
+    display: flex;
+}
+
+.header-icon-Open-file{
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    font-size: 30px;
+    padding-bottom: 5px;
+    
+    color: white;
+}
+
+.body{
+    height: 800px;
+    background-color: rgb(139, 142, 142);
+    display: flex;
+    width: 100%;
+}
+
+  .header-title{
+    color: white;
+    padding-top: 10px;
+  }
+
+  .icon-tool{
+    width: 20px;
+    padding-top: 10px;
+    margin-left: 10px;
+  }
+
+  .list-item02{
+    background-color: black;
+  }
+
+  .button02{
+    border-radius: 5px;
+    background-color: red;
+    color: black;
+  }
+
+  .button023{
+    border-radius: 5px;
+    background-color: green;
+    color: black;
+  }
+
+
+  .button024{
+    border-radius: 5px;
+    background-color: green;
+    color: black;
+  }
+
+
+
+
+  

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenCV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/2.8.0/css/bootstrap.css" />
+    <link rel="stylesheet" href="photoEditor.css">
+    
+</head>
+<body>
+
+    <div>
+        <div class="header">
+            <div class="list">
+
+                <h4 class="header-title">Photo Editor</h4>
+
+                <div class="header-icon-Open-file">
+                    <label for="file_input">
+                        <input type="file" id="file_input" style="display: none;">                 
+                        <img class="icon-tool" src="/assets/images/notepad/upload_image.png">
+                    </label>
+                </div>
+    
+                <div class="list-button">
+
+                <input type="file" id="imageInput" style="display: none;">
+
+    
+                    <p class="btn-tool" id="showTextEditor">
+                        <img class="icon-tool" src="/assets/images/notepad/text_box.png">
+                    </p>
+
+                    <p class="btn-tool">
+                        <div class="header-icon-Open-file-002 ">
+                            <label for="imageInput">                         
+                                <img class="icon-tool" src="/assets/images/notepad/add-file.png">                             
+                            </label>
+                        </div>
+                    </p>
+
+                    <p class="btn-tool" id="addImageButton">
+                        <img class="icon-tool dd" src="/assets/images/notepad/add-image-icon.png">
+                    </p>
+
+                    
+                    <p class="btn-tool" id="removeImageButton">
+                        <img class="icon-tool" src="/assets/images/notepad/icons8-export-64.png">
+                    </p>
+
+                    <p class="btn-tool" id="saveButton">
+                        <img class="icon-tool" src="/assets/images/notepad/save.png">
+                    </p>
+
+                    <p class="btn-tool" id="swapColorButton">
+                        <img class="icon-tool" src="/assets/images/notepad/circle.png">
+                    </p>
+
+                    <p class="btn-tool" id="blurButton">
+                        <img class="icon-tool" src="/assets/images/notepad/line.png">
+                    </p>
+
+                    <p class="btn-tool" id="rotationButton">
+                        <img class="icon-tool" src="/assets/images/notepad/group1.png">
+                    </p>
+
+                    <p class="btn-tool" id="zoomInButton">
+                        <img class="icon-tool" src="/assets/images/notepad/zoom-in.png">
+                    </p>
+
+                    <p class="btn-tool" id="zoomOutButton">
+                        <img class="icon-tool" src="/assets/images/notepad/zoom-out.png">
+                    </p>
+
+                    <p class="btn-tool" id="filtersButton">
+                        <img class="icon-tool" src="/assets/images/notepad/redo.png">
+                    </p>
+
+                    <p class="btn-tool" id="sharpnessButton">
+                        <img class="icon-tool" src="/assets/images/notepad/ungroup1.png">
+                    </p>
+
+                    <p class="btn-tool" id="applyBrightness">
+                        <img class="icon-tool"src="/assets/images/notepad/latex.png">
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="list-item02">
+                <div id="textEditorContainer" style="display: none;">
+                    <div>
+                        <button class="btn-tool button023" id="addTextColor">Add color</button>
+                        <button class="btn-tool button024" id="addTextButton">Add Text</button>
+                        <button class="btn-tool button02" id="removeTextButton">Remove Text</button>
+                        <input type="text" id="text_input" placeholder="Nhập văn bản">
+                        <input type="color" id="textColorPicker">
+                        <label for="fontSelect">Font chữ:</label>
+                        <select id="fontSelect">
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                        </select>
+                        <label for="fontSizeSelect">Size:</label>
+                        <select id="fontSizeSelect">
+                            <option value="16">1</option>
+                            <option value="16">3</option>
+                            <option value="16">5</option>
+                            <option value="16">7</option>
+                            <option value="16">9</option>
+                            <option value="16">16</option>
+                            <option value="18">18</option>
+                            <option value="20">20</option>
+                            <option value="24">24</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="body">
+            <div class="content">
+                    <img id="input_img" style="display: none;">  
+                    <canvas id="canvas"></canvas>
+                <!-- <canvas class="size-show" id="canvas"></canvas> -->
+                <canvas id="output_img" style="display: none;"></canvas>    
+              
+            </div>
+        </div>
+
+    </div>
+
+
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric-textbox.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.3.1/fabric.min.js"></script>
+
+    <script src="opencv.js"></script>
+    <script src="script.js"></script>
+    <script>
+
+        document.getElementById('showTextEditor').addEventListener('click', function () {
+           var textEditorContainer = document.getElementById('textEditorContainer');
+           textEditorContainer.style.display = (textEditorContainer.style.display === 'none' || textEditorContainer.style.display === '') ? 'block' : 'none';
+       });
+
+   </script>
+</body>
+
+</html>

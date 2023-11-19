@@ -1,0 +1,3709 @@
+﻿<!DOCTYPE html>
+<!-- abc -->
+<html class="  notepad-on">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google-site-verification" content="WC9FfWNfVRyJn8pWPXTHM4uCe_p-U13-iz0dV8A6puk" />
+  <meta charset="utf-8" />
+  <meta property="og:site_name"
+    content="Real time white board for drawing on line, share photo and capture image from webcam" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://vrobbi-nodedrawing.herokuapp.com" />
+  <meta property="fb:admins" content="100004633505284" />
+  <meta property="og:title" content="Real time whiteboard collaborative with chat in html5 and websocket" />
+  <meta property="fb:app_id" content="508864332486444" />
+  <meta name="keywords"
+    content="lavagna collaborativa, disegnare on line, applicazione real time, multiuser whiteboard, realtime application, drawing on line, drawing game, html5, web 2.0, software, internet, image capture, webcam" />
+  <meta name="description"
+    content="lavagna multiutente condivisa in tempo reale, multiuser whiteboard real time application, draw on line and share your draw with all on the net" />
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+  <title>Notepad MetaLearn</title>
+
+  <!-- CSS -->
+  <link rel='stylesheet' id='mediaelement-css' href='assets/css/mediaelementplayer.min.css' type='text/css'
+    media='all' />
+  <link rel='stylesheet' id='wp-mediaelement-css' href='js/mediaelement-and-player.min.js' type='text/css'
+    media='all' />
+  <link rel='stylesheet' id='customscrollbar-css' href='assets/css/customscrollbar.min.css' type='text/css'
+    media='all' />
+  <!-- <link rel='stylesheet' id='fontawesome-css'
+    href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css' media='all' /> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel='stylesheet' id='iii-editor-css' href='assets/css/editor.css' type='text/css' media='all' />
+  <link rel='stylesheet' id='iii-selectBoxIt-css' href='assets/css/jquery.selectBoxIt.css' type='text/css'
+    media='all' />
+  <link rel='stylesheet' id='bootstrap-css' href='assets/css/bootstrap.min.css' type='text/css' media='all' />
+
+
+  <!--css cho login-->
+  <link rel='stylesheet' href='assets/css/login.css' type='text/css' media='all' />
+  <link type="text/css" rel="stylesheet" href="https://source.zoom.us/2.8.0/css/bootstrap.css" />
+  <link type="text/css" rel="stylesheet" href="https://source.zoom.us/2.8.0/css/react-select.css" />
+  <style id='iii-notepad-style-inline-css' type='text/css'>
+    @font-face {
+      font-family: "Myriad_regular";
+      src: url("assets/fonts/MYRIADPROREGULAR.ttf");
+    }
+  </style>
+
+  <link rel='stylesheet' id='iii-notepad-style-css' href='assets/css/styles1.css' type='text/css' media='all' />
+
+  <!-- JS HEAD -->
+  <script type='text/javascript' src='js/jquery/jquery.js'></script>
+  <script type='text/javascript' src='js/jquery/jquery-migrate.min.js'></script>
+  <script type='text/javascript' src='js/html2canvas.svg.js'></script>
+  <script type='text/javascript' src='assets/vendor/videoCall/lib/fm.js'></script>
+  <script type='text/javascript' src='assets/vendor/videoCall/lib/fm.websync.js'></script>
+  <script type='text/javascript' src='assets/vendor/videoCall/lib/fm.websync.subscribers.js'></script>
+  <script type='text/javascript' src='assets/vendor/videoCall/lib/fm.websync.chat.js'></script>
+  <!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.11/socket.io.js'></script> -->
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+    integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"
+    integrity="sha512-xcHCGC5tQ0SHlRX8Anbz6oy/OullASJkEhb4gjkneVpGE3/QGYejf14CUO5n5q5paiHfRFTa9HKgByxzidw2Bw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    window.MathJax = {
+      // options
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <link rel="icon" href="assets/images/normal/LOGO_New_888tutor_BLACK11.png">
+  <!-- STYLE -->
+  <style>
+    #show-test-tool1 {
+      float: right;
+      position: absolute;
+      top: 100px;
+      left: 0;
+      display: block;
+      z-index: 99999;
+    }
+
+    #join_meeting {
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body class="notepad-on">
+  <!-- vuong -->
+  <div id="login_room">
+
+  </div>
+  <!-- LOADING -->
+  <div id="cc-loading"><span></span></div>
+
+
+
+  <!-- INPUT CURENT URL -->
+  <input type="hidden" class="current_url" value="index.html">
+
+  <!-- ONLINE LEARNING -->
+  <div id="online-learning">
+
+
+    <div class="container-fluid">
+
+      <!-- MENU -->
+      <div id="menu-top">
+        <div class="row">
+
+          <!-- NAV -->
+          <div class="nav-menu">
+            <!-- BTN TOGGLE NAV -->
+            <button type="button" class="btn" style="background: transparent;">
+              <i class="fa fa-bars fa-2x" style="margin-top: 6px;"></i>
+            </button>
+
+            <!-- MENU NAV -->
+            <div class="menu">
+              <ul class="list-group">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="notepate">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>Notepate
+                  </a>
+                  <ul class="dropdown-menu-a" id="notepate">
+                    <li><a><i class="fa fa-circle" aria-hidden="true"></i>New</a></li>
+                    <li>
+                      <a><i class="fa fa-circle" aria-hidden="true"></i>Test Camera</a>
+                    </li>
+                    <li><a><i class="fa fa-circle" aria-hidden="true"></i>Test Mic</a></li>
+                    <li>
+                      <a>
+                        <i class="fa fa-circle" aria-hidden="true"></i>Open Worksheet
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="tutoring">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>Tutoring
+                  </a>
+                  <ul class="dropdown-menu-a" id="tutoring">
+                    <li><a><i class="fa fa-circle" aria-hidden="true"></i>New</a></li>
+                    <li>
+                      <a><i class="fa fa-circle" aria-hidden="true"></i>Test Camera</a>
+                    </li>
+                    <li><a><i class="fa fa-circle" aria-hidden="true"></i>Test Mic</a></li>
+                    <li>
+                      <a>
+                        <i class="fa fa-circle" aria-hidden="true"></i>Open Worksheet
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle worksheet-dropdown-btn">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>Worksheet
+                  </a>
+                  <div id="worksheet-container" class="worksheet-dropdown" style="display: none;">
+                    <!-- search bar -->
+                    <!-- <div class="input-group input-group-sm">
+                      <input type="text" class="form-control" placeholder="Search sheet name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                      
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div> -->
+
+                    <!-- list -->
+                    <div
+                      style="display: flex;width: fit-content;height: 36px;align-items: center;border: 1px solid #ccc;border-radius: 4px;overflow: hidden;width: 96%;margin: 2%;background: white;">
+                      <input type="text" placeholder="Search" id="worksheet-search"
+                        style="margin: 0;padding: 0 16px;border: none;flex-grow: 1;flex-basis: 0;min-width: 0;">
+                      <button type="button" class="btn btn-default" style="height: 40px; border: none;">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <ul id="worksheet" style="max-height: 400px; overflow-y: scroll;">
+                    </ul>
+                    <nav aria-label="Page navigation" style="text-align: right;">
+                      <ul id="worksheet-page" class="pagination pagination-sm" style="margin: 0; margin-top: 10px;">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </li>
+              </ul>
+              <ul>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="list-object">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>List Object
+                  </a>
+                  <ul class="dropdown-menu-a list-object" id="list-object">
+
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <!-- OUT SIDE -->
+            <div class="outside">
+              <a href=""></a>
+            </div>
+          </div>
+
+          <!-- LOGO -->
+          <div class="logo fl">
+            <a style="color: white">
+              <!-- <img src="assets/images/normal/LOGO_New_888tutor_BLACK.png" /> -->
+              <b>Meta Learn</b>
+            </a>
+            <!-- <div class="tent" style="float: right;color: #fff;margin-left: 10px;margin-top: 2px">
+              <p style="color: #ffce0d">iK Tutoring</p>
+            </div> -->
+          </div>
+
+          <!-- ACTION -->
+          <div class="actions-r">
+            <div class="row bottom-menu">
+              <div class="actionOnRight">
+                <div class="block-chat">
+                  <p class="toogle-menu-tray active">
+                    <img src="assets/images/video/01_icon_Chat_Participants.png" />
+                  </p>
+
+                  <p class="video-mode">
+
+                    <img src="assets/images/video/02_icon_VideoMode.png" />
+
+                  </p>
+                  <p class="video_list">
+                    <img src="assets/images/video/06_icon_Visable_ON.png" />
+                  </p>
+                  <p id="catturacam" class="">
+                    <img src="assets/images/video/04_icon_Sound_ON.png" />
+                  </p>
+                  <p class="pop-chat active">
+                    <img src="assets/images/reveal/09_icon_Menu_Open.png" />
+                  </p>
+                </div>
+                <div class="block-video">
+                  <p class="switch hidden" id="toggleVideoMute">
+                    <img src="assets/images/video/07_icon_Visable_OFF.png" />
+                  </p>
+                </div>
+                <div class="block-voice hidden">
+                  <p class="switch" id="toggleAudioMute">
+                    <img src="assets/images/video/05_icon_Sound_OFF.png" alt="Voice" />
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- JOIN MEETING -->
+            <div class="tb-register" id="join_meeting" style="margin-top: 0px !important;padding-right: 10px;">
+              <a class="tb-register-btn">
+                <img src="assets/images/video/02_icon_VideoMode.png" />
+                <span class="tb-register-txt"> Join </span>
+              </a>
+            </div>
+
+            <!-- REGISTER -->
+            <div class="tb-register" id="register">
+              <a href="https://iktutor.com/iklearn/en/?r=login&ref=notepad" class="tb-register-btn">
+                <img src="assets/images/login/03_icon_n-create_account.png" />
+                <span class="tb-register-txt">
+                  Create Account
+                </span>
+              </a>
+            </div>
+
+            <!-- USERNAME -->
+            <div class="tb-register hidden" id="div-nameuser">
+              <a class="tb-register-btn">
+                <img src="assets/images/login/03_icon_n-create_account.png" />
+                <span class="tb-register-txt" id="nameuser">
+
+                </span>
+              </a>
+            </div>
+
+            <!-- LOGOUT -->
+            <div class="tb-login hidden" id="logout">
+              <a class="tb-login-btn" href1="javascript:window.location.href=window.location.href">
+                <!---->
+                <img src="assets/images/login/01_icon_n_login.png" />
+                <span class="tb-login-txt " id='btn_logout' style="background-color:transparent">
+                  Logout
+                </span>
+              </a>
+            </div>
+
+            <!-- LOGIN -->
+            <div class="tb-login" id="login">
+              <a class="tb-login-btn" onclick="document.getElementById('modal-wrapper').style.display ='block'">
+                <img src="assets/images/login/01_icon_n_login.png" />
+                <span class="tb-login-txt">
+                  Login
+                </span>
+              </a>
+              <!-- vuong -->
+              <!-- form login -->
+              <div id="modal-wrapper" class="modal" style="display: block;">
+                <div class="modal-content animate" style="top: 10%;" id="login-modal">
+                  <div class="imgcontainer">
+                    <span onclick="document.getElementById('modal-wrapper').style.display ='none'"
+                      class="close-login login-hover" title="Close PopUp">&times;</span>
+                    <img src="assets/images/login/1.png" alt="Avatar" class="avatar">
+                    <h1 style="text-align:center">Login</h1>
+                  </div>
+                  <form id="login-form">
+                    <div style="padding: 25px 16px 0;">
+                      <input style="width: 100%;" type="text" placeholder="Enter Username" name="username"
+                        class="rounded" id="username" required>
+                      <div style="width: 100%; display: flex; border: 1px solid #ccc; overflow: hidden;"
+                        class="rounded">
+                        <input type="password" placeholder="Enter Password" name="pass" id="pass"
+                          style="flex: 1; margin: 0; border: 0;" required>
+                        <span id="show-pw" class="show-pw">
+                          <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div style="text-align: right;">
+                      <button class="rounded" id="btn_login" type="submit">Login</button>
+                    </div>
+
+                  </form>
+                </div>
+
+                <div id="create_room" class="modal-content animate hidden" style="top: 20%; height: fit-content;">
+                  <div id="room-btn-container">
+                    <p class="text-title" style="padding: 20px;font-size: medium;text-align: center;">Select room</p>
+                    <div class="" style="margin: 0 30px;">
+                      <select name="room" id="room" class="rounded room-bg"
+                        style="padding: 8px 16px; margin: 12px 0px; width: 100%; color: #fff;"></select>
+                      <div class="" style="display: flex;justify-content: flex-end;margin-top: 20px;">
+                        <div>
+                          <button class="btn btn-success rounded room-bg text-title" id="btn_join_smartwork"
+                            style="padding: 10px;margin-right: 16px; border: #000;">MetaLearn Tutorings</button>
+                          <button class="btn btn-success rounded room-bg text-title" id="btn_join_room"
+                            style="padding: 10px;margin-right: 16px; border: #000;">join</button>
+                          <button class="btn btn-warning rounded room-bg text-title" id="btn_create_room"
+                            style="padding: 10px; border: #000;">Create</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="join-room-animation" class="hidden">
+                    <p style="display: inline; margin-right: 20px; color: #fff;">Waiting for host to accept your
+                      requirement</p>
+                    <div class="loader"></div>
+                  </div>
+                </div>
+
+                <div id="create_room_modal" class="modal-content animate hidden" style="top: 20%; height: fit-content;">
+                  <p class="text-title" style="padding: 20px;font-size: medium;text-align: center;">Enter your room name
+                  </p>
+                  <div style="padding: 12px 32px;">
+                    <input name="room-name" id="room-name" class="rounded room-bg"
+                      style="padding: 10px 16px; width: 100%; color: #fff;"></input>
+                    <div class="" style="display: flex;justify-content: flex-end;margin-top: 20px;">
+                      <button class="btn btn-success rounded text-title room-bg" id="room-create"
+                        style="border: #000; padding: 10px;margin-right: 16px;">create</button>
+                      <button class="btn btn-danger rounded text-title room-bg" id="room-create-cancel"
+                        style="border: #000; padding: 10px;">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <!-- MODE -->
+              <div class="tb-mode">
+                <select id="notepad-option" onchange="window.location.href= this.value">
+                  <option value="notepad.html">
+                    Notepad
+                  </option>
+                  <option value="index.html" selected>
+                    Tutoring
+                  </option>
+                  <option value="worksheet.html">
+                    Worksheet
+                  </option>
+                </select>
+              </div>
+
+              <!-- FULL SCREEN -->
+              <div class="full-screen-mode full">
+                <p>
+                  <img class="full" src="assets/images/normal/01_Icon_Full_Screen.png" />
+                  <img class="min" src="assets/images/normal/02_Icon_Min_Screen.png" />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!-- MENU MAIN -->
+          <div id="menu-main">
+            <div class="row">
+              <div class="no-padding border-r">
+                <div class="row taskbar-notepad r-taskbar">
+                  <div class="block-toolbar">
+
+                    <div>
+                      <div class="block-ws">
+
+
+                        <div class="containerr" style="margin-bottom: 27px;margin-left: -8px; margin-right:40px">
+
+                          <div class="select-box" id="dropdown">
+
+                            <div class="options-container">
+
+                              <div class="option" id="newhihi">
+                                <input type="radio" class="radio" id="Automobiles" name="category" value="n">
+                                <label for="Automobiles">New</label>
+                              </div>
+
+                              <div class="option" id="openhihi">
+                                <input type="radio" class="radio" id="Film" name="category" value="">
+                                <label for="Film">Test Camera</label>
+                              </div>
+
+
+                              <div class="option" id="savehihi">
+                                <input type="radio" class="radio" id="science" name="category" value="">
+                                <label for="science">Test Mic</label>
+                              </div>
+
+
+                              <div class="option" id="p">
+                                <input type="radio" class="radio" id="Music" name="category" value="">
+                                <label for="Music">Open Worksheet</label>
+                              </div>
+                            </div>
+                            <div class="selected">
+                              Select Action
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="block-control fl">
+                        <div class="block-tool-btn" style="height: 40px; overflow: hidden;">
+
+                          <p id="moveObject" class="tool-btn tooltip-wrap active dataNameValue" data-layer="1">
+                            <img src="assets/images/notepad/move.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Move tool</span>
+                              <span class="t">Move Object</span>
+                            </span>
+                          </p>
+
+                          <p id="drwToggleDrawMode" data-name="pencil" class="tool-btn tooltip-wrap dataNameValue"
+                            data-layer="1">
+                            <img src="assets/images/notepad/pen.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Pen tool</span>
+                              <span class="t">Draw on the screen</span>
+                            </span>
+                          </p>
+
+                          <p class="tool-btn tooltip-wrap dataNameValue" data-name="eraser" id="change-eraser"
+                            data-name2="Pen">
+                            <img src="assets/images/notepad/eraser.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Eraser tool</span>
+                              <span class="t">Eraser lines and image from screen</span>
+                            </span>
+                          </p>
+
+                          <p class="tool-btn tooltip-wrap dataNameValue" data-name="connector" id="change-connector"
+                            data-name2="Eraser">
+                            <img src="assets/images/notepad/connector-icon.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Connector tool</span>
+                              <span class="t">Connector and image from screen</span>
+                            </span>
+                          </p>
+
+                          <p class="tool-btn tooltip-wrap dataNameValue" data-name="color" id="change-color"
+                            data-name2="Connector Tool">
+                            <img src="assets/images/notepad/color/top/black.png" alt="Colors">
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Color tool</span>
+                              <span class="t">Select a line color</span>
+                            </span>
+                          </p>
+
+                          <p class="tool-btn tooltip-wrap dataNameValue" data-name="layer" id="add-layer"
+                            data-name2="Color Tool"> <!-- bỏ block-layer -->
+                            <img src="assets/images/notepad/layers.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Layer tool</span>
+                              <span class="t">Create, delete and manage the layers</span>
+                            </span>
+                          </p>
+
+                          <p class="block-grid tool-btn tooltip-wrap dataNameValue" data-name="grid" id="icon-grid"
+                            data-name2="Layer Tool">
+                            <img src="assets/images/notepad/grids.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Grids tool</span>
+                              <span class="t">Triggers guidelines and change background colors</span>
+                            </span>
+                          </p>
+
+                          <!-- thêm đói tượng -->
+                          <p id="shapeMode" class="tool-btn tooltip-wrap dataNameValue" data-name="shape"
+                            data-name2="Grids tool">
+                            <img src="assets/images/notepad/shapes_basic_shares_yellow-512.png" />
+                            <span class="hidden tooltip-icon"></span>
+                          </p>
+
+                          <p id="textMode" class="tool-btn tool-nosubmenu tooltip-wrap dataNameValue"
+                            data-name2="Shape">
+                            <img src="assets/images/notepad/text_box.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Text tool</span>
+                              <span class="t">Create text on the screen</span>
+                            </span>
+                          </p>
+
+                          <!-- <p id="normal-addimage" class="tool-nosubmenu tooltip-wrap dataNameValue" style="display: inline-block;" data-name2="Text Tool">
+                            <img src="assets/images/notepad/upload_image.png" />
+                            <input id="imageMode" class="form-control inputfile input-sm" multiple type="file">
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Image tool</span>
+                              <span class="t">Insert images from the local drive</span>
+                            </span>
+                          </p> -->
+
+                          <p id="quiz-addimage" class="tooltip-wrap dataNameValue" data-name2="Add Text">
+                            <img src="assets/images/notepad/upload_image.png" />
+                            <input id="dndItem" class="form-control inputfile input-sm" type="file" multiple>
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Create Quiz</span>
+                              <span class="t">Upload dnd item</span>
+                            </span>
+                          </p>
+
+                          <p id="icon-video" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Image">
+                            <img src="assets/images/notepad/upload_video_player.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Video</span>
+                              <span class="t">Insert video from the Youtube</span>
+                            </span>
+                          </p>
+
+                          <!-- attach file -->
+                          <p id="icon-attach-file" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Videos">
+                            <img src="assets/images/notepad/attach-file.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">File</span>
+                              <span class="t">Open file</span>
+                            </span>
+                          </p>
+
+                          <!-- microphone record -->
+                          <p id="icon-mic" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Add Folder">
+                            <img src="assets/images/notepad/microphone.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Speaker</span>
+                              <span class="t">Speaker Record</span>
+                            </span>
+                          </p>
+                          <!-- camera record -->
+                          <p id="icon-camera" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Microphone">
+                            <img src="assets/images/notepad/camera.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Camera</span>
+                              <span class="t">Camera Record</span>
+                            </span>
+                            <small id="camera-mark"
+                              style="position: absolute; top: 19px; left: 18px; width: 4px; height: 4px; background: red; border-radius: 50%; display: none;"></small>
+                          </p>
+
+                          <!-- take camera photo -->
+                          <p id="icon-takephoto" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Record">
+                            <img src="assets/images/notepad/takephoto.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Take Photo</span>
+                              <span class="t">Take a photo</span>
+                            </span>
+                          </p>
+
+                          <!-- take screenshot -->
+                          <p id="icon-screenshot" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Camera">
+                            <img src="assets/images/notepad/screen-shot.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Screen Shot</span>
+                              <span class="t">Take a screenshot</span>
+                            </span>
+                          </p>
+
+                          <!-- connect objects -->
+                          <p id="icon-cover" class="tooltip-wrap tool-btn dataNameValue" data-name2="Screenshot">
+                            <img src="assets/images/notepad/cover.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Connect Object</span>
+                              <span class="t">Choose, Connect Objects</span>
+                            </span>
+                          </p><!-- group objects -->
+
+                          <p id="icon-group" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Connect Object">
+                            <img src="assets/images/notepad/group1.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Group</span>
+                              <span class="t">Group Active Objects</span>
+                            </span>
+                          </p><!-- ungroup objects -->
+
+                          <p id="icon-ungroup" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Groups">
+                            <img src="assets/images/notepad/ungroup1.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Ungroup</span>
+                              <span class="t">Ungroup Active Object</span>
+                            </span>
+                          </p>
+                          <p id="icon-save" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="UnGroups">
+                            <img src="assets/images/notepad/save.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Save</span>
+                              <span class="t">This layer will save</span>
+                            </span>
+                          </p>
+
+                          <p class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue" data-name2="Save">
+                            <img src="assets/images/notepad/add-file.png" />
+                            <input id="icon-load-canvas" accept=".zip, .json" class="form-control inputfile input-sm"
+                              type="file">
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Load canvas</span>
+                              <span class="t">Insert canvas from the local drive</span>
+                            </span>
+                          </p>
+
+                          <p id="icon-load" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Load Canvas">
+                            <img src="assets/images/notepad/load-layer.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Load Layer</span>
+                              <span class="t">Load layer saved</span>
+                            </span>
+                          </p>
+                          <p id="createLatex" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Load Layer">
+                            <img src="assets/images/notepad/latex.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Load Latex</span>
+                              <span class="t">Load a Latex</span>
+                            </span>
+                          </p>
+
+                          <p id="omegaSymbol" class="tooltip-wrap tool-btn dataNameValue" data-name2="Text">
+                            <img src="assets/images/notepad/omega.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Load Symbol</span>
+                              <span class="t">Load a Symbol</span>
+                            </span>
+                          </p>
+
+                          <p id="zoomIn" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue" data-name2="Symbol">
+                            <img src="assets/images/notepad/zoom-in.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Zoom in</span>
+                              <span class="t c-zoom">Current zoom: 100%</span>
+                            </span>
+                          </p>
+
+                          <p id="zoomOut" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Zoom Out">
+                            <img src="assets/images/notepad/zoom-out.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Zoom out</span>
+                              <span class="t c-zoom">Current zoom: 100%</span>
+                            </span>
+                          </p>
+
+                          <p id="svg" class="tooltip-wrap tool-btn dataNameValue" data-name2="Zoom In">
+                            <img src="assets/images/notepad/svg.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Load SVG</span>
+                              <span class="t">Load a SVG</span>
+                            </span>
+                          </p>
+
+                          <p class="tool-btn tooltip-wrap dataNameValue" id="quiz" data-name="quiz" data-name2="SVG">
+                            <img src="assets/images/notepad/puzzle.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Quiz</span>
+                              <span class="t">Create, do and save quiz</span>
+                            </span>
+                          </p>
+
+                          <p class="block-line tool-btn tooltip-wrap dataNameValue" id="lines" data-name="lines"
+                            data-name2="Quizs">
+                            <img src="assets/images/notepad/line.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Lines</span>
+                              <span class="t">Choose type of line</span>
+                            </span>
+                          </p>
+
+                          <p id="reset" class="tooltip-wrap tool-btn dataNameValue" data-name2="Lines">
+                            <img src="assets/images/notepad/redo.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Reset</span>
+                              <span class="t">Reset the canvas to original position</span>
+                            </span>
+                          </p>
+
+                          <p id="icon-save-api" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Share">
+                            <img src="assets/images/notepad/save.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Save</span>
+                              <span class="t">This worksheet will be saved</span>
+                            </span>
+                          </p>
+
+                          <!-- <p id="opencv" class="tooltip-wrap tool-btn dataNameValue" data-name2="Save">
+                            <a href="http://127.0.0.1:5503/index03.html">
+                              <img src="./demo.jpg" />
+                              <span class="hidden tooltip-icon">
+                                <span class="h">Load Opencv</span>
+                                <span class="t">Load a Opencv</span>
+                              </span>
+                            </a>
+                          </p> -->
+
+                          <p id="opencv" class="tooltip-wrap tool-btn dataNameValue" data-name2="Save">                      
+                              <img src="assets/images/notepad/diamond.png" />
+                              <span class="hidden tooltip-icon">
+                                <span class="h">Load Opencv</span>
+                                <span class="t">Load a Opencv</span>
+                              </span>
+                          </p>
+
+
+                          <p id="icon-export" class="tooltip-wrap tool-btn tool-nosubmenu dataNameValue"
+                            data-name2="Photo Editor">
+                            <img src="assets/images/notepad/icons8-export-64.png" />
+                            <span class="hidden tooltip-icon">
+                              <span class="h">Export pdf</span>
+                              <span class="t">Export to pdf file</span>
+                            </span>
+                          <p class="dataNameValue" data-name2="Save"></p>
+                          </p>
+
+
+
+
+                        </div>
+
+                        <div class="hidden pencil-class style-popup-pencil tool-submenu">
+
+                          <ul id="pencils-body">
+                            <li class="icon-layer close-popup-pencil">
+                              <span style="line-height: 0;" class="icon-layer close-popup-pencil">
+                                Pen
+                              </span>
+                            </li>
+                            <li class="icon-layer drawing-mode-selector hr5 active" data-pencil="Pencil">
+                              <img style="width: 20px;height: 20px" src="assets/images/notepad/pen.png" />
+                            </li>
+                            <li class="icon-layer drawing-mode-selector hr5" data-pencil="Circle">
+                              <img style="width: 20px;height: 20px" src="assets/images/notepad/circle.png" />
+                            </li>
+                            <li class="icon-layer drawing-mode-selector hr5" data-pencil="Spray">
+                              <img style="width: 20px;height: 20px" src="assets/images/notepad/spray.png" />
+                            </li>
+                            <li class="icon-layer drawing-mode-selector hr5" data-pencil="Pattern">
+                              <img style="width: 20px;height: 20px" src="assets/images/notepad/pattern.png" />
+                            </li>
+                            <li class="icon-layer drawing-mode-selector hr5" data-pencil="Hline">
+                              <img style="width: 20px;height: 20px" src="assets/images/notepad/hline.png" />
+                            </li>
+                            <li class="icon-layer drawing-mode-selector hr5" data-pencil="Vline">
+                              <img style="width: 20px;height: 20px" src="assets/images/notepad/vline.png" />
+                            </li>
+                            <li class="icon-layer drawing-mode-selector hr5" data-pencil="Square">
+                              <img style="width: 20px;height: 20px" src="assets/images/notepad/square.png" />
+                            </li>
+                            <li class="icon-layer drawing-mode-selector hr5" data-pencil="Diamond">
+                              <img style="width: 20px;height: 20px" src="assets/images/notepad/diamond.png" />
+                            </li>
+                            <li style="width: fit-content;">
+                              <span style="line-height: 0; color: white;" id="drawing-line-width-label">
+                                1.67%
+                              </span>
+                            </li>
+                            <li style="width: 150px; z-index: 100;">
+                              <input type="range" value="1" min="0" max="60" id="drawing-line-width">
+                            </li>
+                            <li style="margin-left: 20px;">
+                              <span style="line-height: 0; color: white;">
+                                Color
+                              </span>
+                            </li>
+                            <li style="margin-top: 10px;">
+                              <input type="color" value="#000608" id="drawing-color" style="height: 20px;">
+                            </li>
+                          </ul>
+
+
+                        </div>
+                        <div class="hidden  hello close-class style-popup-close">
+                          <div class="col-md-9 text-popup-close">
+                            No layer is selected
+                          </div>
+                          <div class="col-md-3 no-padding">
+                            <button type="button" class="red-btn scel-btn close-popup-close">
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                        <div class="hidden eraser-class style-popup-eraser tool-submenu">
+                          <ul id="erasers-body">
+                            <li class="icon-layer close-popup-eraser">
+                              <span>
+                                Eraser
+                              </span>
+                            </li>
+                            <li class="icon-layer btn-eraser active" data-eraser="30">
+                              <img style="width: 5px;height: 5px;" src="assets/images/notepad/eraser/1.png" />
+                            </li>
+                            <li class="icon-layer btn-eraser" data-eraser="50">
+                              <img style="width: 8px;height: 8px;" src="assets/images/notepad/eraser/1.png" />
+                            </li>
+                            <li class="icon-layer btn-eraser" data-eraser="70">
+                              <img style="width: 11px;height: 11px;" src="assets/images/notepad/eraser/1.png" />
+                            </li>
+                            <li class="icon-layer btn-eraser" data-eraser="90">
+                              <img style="width: 14px;height: 14px;" src="assets/images/notepad/eraser/1.png" />
+                            </li>
+                            <li class="icon-layer btn-eraser" data-eraser="100">
+                              <img style="width: 18px;height: 18px;" src="assets/images/notepad/eraser/1.png" />
+                            </li>
+                            <li class="icon-layer btn-eraser-clear border-bottom">
+                              <img src="assets/images/notepad/eraser-all.png" />
+                            </li>
+
+                          </ul>
+                        </div>
+                        <div class="hidden color-class style-popup-color tool-submenu">
+                          <ul id="colors-body">
+                            <li class="icon-layer close-popup-color">
+                              <span>
+                                Color
+                              </span>
+                            </li>
+                            <li class="icon-layer btn-color" data-color="#ffffff" data-image-url="white.png">
+                              <img src="assets/images/notepad/color/white.png" />
+                            </li>
+                            <li class="icon-layer btn-color active" data-color="#000000" data-image-url="black.png">
+                              <img src="assets/images/notepad/color/black.png" />
+                            </li>
+                            <li class="icon-layer btn-color" data-color="#0000FF" data-image-url="blue.png">
+                              <img src="assets/images/notepad/color/blue.png" />
+                            </li>
+                            <li class="icon-layer btn-color" data-color="#FF0000" data-image-url="red.png">
+                              <img src="assets/images/notepad/color/red.png" />
+                            </li>
+                            <li class="icon-layer btn-color" data-color="#008000" data-image-url="green.png">
+                              <img src="assets/images/notepad/color/green.png" />
+                            </li>
+                            <li class="icon-layer btn-color" data-color="#C500AF" data-image-url="redPurple.png">
+                              <img src="assets/images/notepad/color/light_purple.png" />
+                            </li>
+                            <li class="icon-layer btn-color" data-color="#FF8D15" data-image-url="orange.png">
+                              <img src="assets/images/notepad/color/orange.png" />
+                            </li>
+                            <li class="icon-layer btn-color" data-color="#8E3AFF" data-image-url="purple.png">
+                              <img src="assets/images/notepad/color/purple.png" />
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div class="hidden connector-class style-popup-connector tool-submenu">
+                          <ul id="connector-body">
+                            <li class="icon-layer close-popup-connector">
+                              <span style="color: #fff; margin-left: 10px;">
+                                Connector
+                              </span>
+                            </li>
+                            <li class="icon-layer btn-color active" id="videoUploadButton">
+                              <img style="width: 32px; height: 32px; margin-top: 3px;"
+                                src="assets/images/notepad/add-video-icon.png" />
+                              <input type="file" id="videoInput" accept="video/*" style="display: none;" />
+                            </li>
+                            <li class="icon-layer btn-color active" id="imageUploadButton">
+                              <img style="width: 22px; height: 22px;" src="assets/images/notepad/add-image-icon.png" />
+                              <input type="file" id="fileUpload" accept="image/*" style="display: none;" />
+                            </li>
+                            <li id="deleteObjectButton" class="icon-layer btn-color active">
+                              <img src="assets/images/notepad/detele-icon.png" />
+                            </li>
+                            <li id="unSelectButton" class="icon-layer btn-color active">
+                              <img style="width: 22px; height: 22px;" src="assets/images/notepad/unselect-icon.png" />
+                            </li>
+                            <li class="icon-layer btn-color active">
+                              <form id="shapeForm">
+                                <select id="shapeSelect">
+                                  <option value="circle">Hình tròn</option>
+                                  <option value="square">Hình vuông</option>
+                                  <option value="triangle">Hình tam giác</option>
+                                  <option value="rectangle">Hình chữ nhật</option>
+                                  <!-- Add more shape options as needed -->
+                                </select>
+                            <li id="addShapeButton" class="icon-layer btn-color active">
+                              <img style="width: 20px; height: 20px;" src="assets/images/notepad/plus-icon.png" />
+                            </li>
+                            </form>
+                            </li>
+                            <li class="icon-layer btn-color active" id="showTextButton">
+                              <img style="width: 22px; height: 22px;" src="assets/images/notepad/show-text-icon.png" />
+                              <span class="hidden tooltip-icon">
+                                <span class="h">Hide Text</span>
+                              </span>
+                            </li>
+                            <li class="icon-layer btn-color active" id="doTestConnect">
+                              <img style="width: 20px; height: 20px;" src="assets/images/notepad/do-test-icon.png" />
+                              <span class="hidden tooltip-icon">
+                                <span class="h">Do Test</span>
+                              </span>
+                            </li>
+                            <li class="icon-layer btn-color active" id="checkTestConnect">
+                              <img style="width: 20px; height: 20px;" src="assets/images/notepad/check-test-icon.png" />
+                              <span class="hidden tooltip-icon">
+                                <span class="h">Check Test</span>
+                              </span>
+                            </li>
+                            <li class="icon-layer btn-color active" id="saveTestConnect">
+                              <img style="width: 18px; height: 18px;" src="assets/images/notepad/save.png" />
+                              <span class="hidden tooltip-icon">
+                                <span class="h">Save Test</span>
+                              </span>
+                            </li>
+                            <li class="icon-layer btn-color active" id="openFileTestConnect">
+                              <img style="width: 22px; height: 22px;" src="assets/images/notepad/open-test-icon.png" />
+                              <input type="file" id="jsonFileUpload" accept="application/json" style="display: none;" />
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div class="hidden layer-class style-popup-layer tool-submenu">
+                          <ul id="layers-body">
+                            <li class="close-popup-layer">
+                              <p id="layer-span">
+                                Layers
+                              </p>
+                            </li>
+                            <li class="icon-layer btn-add-layer">
+                              <img src="assets/images/notepad/layer/add.png" />
+                            </li>
+                            <li class="icon-layer btn-delete-layer border-bottom">
+                              <img src="assets/images/notepad/layer/delete.png" />
+                            </li>
+                            <!-- vuong -->
+                            <li class="icon-layer icon-selector active" data-cnt="1" data-id="1">
+                              <img src="assets/images/notepad/layer/layer-1.png" />
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="hidden grid-class style-popup-grid tool-submenu">
+                          <ul id="grids-body">
+                            <li class="icon-layer close-popup-grid">
+                              <span>
+                                Grid
+                              </span>
+                            </li>
+                            <li class="icon-layer btn-color-grid active" data-color="#ffffff">
+                              <img src="assets/images/notepad/grid/white.png" />
+                            </li>
+                            <li class="icon-layer btn-color-grid" data-color="#dddddd">
+                              <img src="assets/images/notepad/grid/gray.png" />
+                            </li>
+                            <li class="icon-layer btn-color-grid" data-color="#fffdbf">
+                              <img src="assets/images/notepad/grid/yellow.png" />
+                            </li>
+                            <li class="icon-layer btn-color-grid border-bottom" data-color="#d1fffe">
+                              <img src="assets/images/notepad/grid/blue.png" />
+                            </li>
+                            <li class="icon-layer btn-grid" data-grid="1">
+                              <img src="assets/images/notepad/grid/type1.png" />
+                            </li>
+                            <li class="icon-layer btn-grid" data-grid="2">
+                              <img src="assets/images/notepad/grid/type2.png" />
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="hidden shape-class style-popup-pencil tool-submenu">
+                          <ul id="pencils-body">
+                            <li class="icon-layer close-popup-pencil">
+                              <span style="line-height: 0;" class="icon-layer close-popup-pencil">Geometric</span>
+                            </li>
+
+                            <li id="iconTriange" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/triangle.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconCricle" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/circle.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconElipse" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/oval.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconRect" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/rectangle.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconRoundedRect" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/rectangle-rounded.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconArrowRightArrow" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/arrow-right.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconTurnLeftArrow" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/arrow-left.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconTwoWayArrow" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/arrow-twoway.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconStar" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/star.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconPolygon" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/hexagon.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconTrapezoid" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/trapezoid.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconPolygen" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/pallalegram.png" />
+                              <span class="hidden tooltip-icon"></span>
+                            </li>
+
+                            <li id="iconArrowTo" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/chevron.png" />
+                              <span class="hidden tooltip-icon"></span>
+                              </span>
+                            </li>
+
+                            <li id="iconHeart" class="block-layer tooltip-wrap">
+                              <img src="assets/images/normal/heart-outline.png" />
+                              <span class="hidden tooltip-icon"></span>
+                              </span>
+                            </li>
+                            <li class="icon-layer close-popup-pencil" style="width: fit-content;">
+                              <span style="line-height: 0;" class="icon-layer close-popup-pencil">Connect</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="hidden np-sheet-info"></div>
+                        <div class="hidden screenshot-class style-popup-screenshot">
+                          <p class="name-popup">
+                            Capture Images
+                          </p>
+                          <ul>
+                            <li class="item-screenshot" style=" padding-right: 20px">
+                              <input type="checkbox" class="checkbox-style" id="screenshot-check" value="" />
+                            </li>
+                            <li class="item-screenshot" style=" width: 100px;">
+                              <form method="get">
+                                <select class="select-box-it form-control" id="select-screenshot">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="4">4</option>
+                                  <option value="8">8</option>
+                                  <option value="20">20</option>
+                                  <option value="60">60</option>
+                                  <option value="120">120</option>
+                                  <option value="300">300</option>
+                                  <option value="600">600</option>
+                                </select><span class="style-sec">Sec.</span>
+                              </form>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="hidden quiz-class style-popup-layer tool-submenu">
+                          <ul id="quizs-body">
+                            <li class="icon-layer close-popup-quiz">
+                              <span style="margin-left: 16px;">
+                                Quiz
+                              </span>
+                            </li>
+                            <li class="icon-layer">
+                              <select id="quiz-type">
+                                <option value="quiz-1">Select Object</option>
+                                <option value="quiz-2">Input Object</option>
+                                <option value="quiz-3">Match Object</option>
+                                <option value="quiz-9">Blank Object</option>
+                                <option value="quiz-10">Single Choose</option>
+                                <option value="quiz-11">Multiple Choose</option>
+                                <!-- <option value="quiz-4">relational puzzles</option>
+                                                          <option value="quiz-5">and logic puzzles</option> -->
+                              </select>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="quiz-create" class="tooltip-wrap">
+                                <img src="assets/images/notepad/create-quiz.png">
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Create Quiz</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer" style="color: #ccc;">
+                              <p class="tooltip-wrap input-container">
+                                <input id="quiz-input-file" type="file" name="quiz-file" accept=".json">
+                                <label for="quiz-input-file" style="color: #aaa; margin: 0;">
+                                  <img src="assets/images/notepad/add-file.png" />
+                                </label>
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Choose a file</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="open-quiz-modal" class="tooltip-wrap" style="display: block;">
+                                <img src="assets/images/notepad/pen.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Text content</span>
+                                  <span class="t">Input text content</span>
+                                </span>
+                              </p>
+                              <p id="create-table-empty" class="tooltip-wrap" style="display: none;">
+                                <img src="assets/images/notepad/pen.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Text content</span>
+                                  <span class="t">Input text content</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="open-single-choose-modal" class="tooltip-wrap" style="display: none;">
+                                <img src="assets/images/notepad/single-choose-create-icon.jpg" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Text content</span>
+                                  <span class="t">Input text content</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="open-multiple-choose-modal" class="tooltip-wrap" style="display: none;">
+                                <img src="assets/images/notepad/multiple-choose-icon.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Text content</span>
+                                  <span class="t">Input text content</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="multiple-choose-question" class="tooltip-wrap" style="display: none;">
+                                <img src="assets/images/notepad/question-icon.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Text content</span>
+                                  <span class="t">Input text content</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="multiple-choose-lock-object" class="tooltip-wrap" style="display: none;">
+                                <img src="assets/images/notepad/object-lock-icon.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Text content</span>
+                                  <span class="t">Input text content</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="open-multiple-upload-image" class="tooltip-wrap" style="display: none;">
+                                <img src="assets/images/notepad/upload_image.png" />
+                                <input type="file" id="fileUploadMultipleImage" accept="image/*"
+                                  style="display: none;" />
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="open-multiple-add-rect" class="tooltip-wrap" style="display: none;">
+                                <img src="assets/images/notepad/rect-icon.png" />
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="delete-multiple-choose-object" class="tooltip-wrap" style="display: none;">
+                                <img src="assets/images/notepad/delete-object-icon.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Text content</span>
+                                  <span class="t">Input text content</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="quiz-answer" class="tooltip-wrap">
+                                <img src="assets/images/notepad/create-answer.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Answer</span>
+                                </span>
+                              </p>
+
+                            </li>
+                            <li class="icon-layer">
+                              <p id="quiz-view-answer" class="tooltip-wrap">
+                                <img src="assets/images/notepad/unview-answer.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">View Answer</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="quiz-doquiz" class="tooltip-wrap">
+                                <img src="assets/images/notepad/edit.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Do Quiz</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="quiz-check" class="tooltip-wrap">
+                                <img src="assets/images/notepad/check.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Check</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="quiz-save-image" class="tooltip-wrap">
+                                <img src="assets/images/notepad/save-image.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Save Quiz</span>
+                                </span>
+                              </p>
+                            </li>
+                            <li class="icon-layer">
+                              <p id="quiz-save" class="tooltip-wrap">
+                                <img src="assets/images/notepad/save.png" />
+                                <span class="hidden tooltip-icon">
+                                  <span class="h">Save Quiz</span>
+                                </span>
+                              </p>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="hidden lines-class style-popup-layer tool-submenu">
+
+                          <!-- line type 1 simple line -->
+                          <p id="simple-line" class="draw-line">
+                            <img src="assets/images/notepad/arrow-trend-up-no-background.png" />
+                          </p>
+
+                          <!-- line type 2 multiple line -->
+                          <p id="multiple-line" class="draw-line">
+                            <img src="assets/images/notepad/line.png" />
+                          </p>
+
+                          <!-- line type 3 waving line -->
+                          <p id="waving-line" class="draw-line hidden">
+                            <img src="assets/images/notepad/waveline5.png" />
+                          </p>
+
+                          <!-- line type 4 dash line -->
+                          <p id="dash-line" class="draw-line">
+                            <img src="assets/images/notepad/vline.png" />
+                          </p>
+
+                          <!-- line type 5 curve line -->
+                          <p id="curve-line" class="draw-line">
+                            <img src="assets/images/notepad/icon-curve.png" />
+                          </p>
+
+                          <!-- line type 6 dot line -->
+                          <p id="dot-line" class="draw-line">
+                            <img src="assets/images/notepad/dotlineGraph.png" />
+                          </p>
+                        </div>
+
+
+
+
+
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="screenshot-popup-class hidden device-popup">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10xp;">
+                      <button id="screenshot-capture" type="button" class="btn btn-success">
+                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                      </button>
+                      <button id="screenshot-close" type="button" class="btn btn-danger"
+                        style="margin-left: 42px;">X</button>
+                    </div>
+                    <span></span>
+                    <img id="screenshot-img" src="" alt="screenshot"
+                      style="width: 600px; height: auto; border: 1px solid #ccc;">
+                  </div>
+
+                  <div class="takephoto-popup-class hidden device-popup">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10xp; min-width: 300px;">
+                      <button id="takephoto-capture" type="button" class="btn btn-success">
+                        <i class="fa fa-camera-retro" aria-hidden="true"></i>
+                      </button>
+                      <button id="takephoto-close" type="button" class="btn btn-danger"
+                        style="margin-left: 42px;">X</button>
+                    </div>
+                    <span></span>
+                    <img id="takephoto-img" alt="selfie" style="width: 300px; height: auto; border: 1px solid #ccc;">
+                    <ul class="list" style="margin-top: 10px;"></ul>
+                    <div style="display: none; position: relative;">
+                      <video id="takephoto-video" src="" width="640" height="480" autoplay></video>
+                      <canvas id="takephoto-canvas" width="640" height="480"></canvas>
+                    </div>
+                  </div>
+                  <div class="video-popup-class style-popup-video hidden">
+                    <input type="button" value="X"
+                      style="position: absolute; right: 0; top: 0; color: red; background-color: white; border: none;"
+                      id="btnclose">
+
+                    <p class="name-popup">
+                      Enter Video Url
+                    </p>
+                    <div class="content-popup">
+                      <input type="text" class="video-url" name="video-url" />
+                      <button class="video-btn">
+                        Add Video
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="hidden symbol-popup-class style-popup-symbol" id="listIconSVG">
+                    <div style="border: 1px solid #ccc;">
+                      <div class="header-symbol" style="display: flex; justify-content: space-between;">
+                        <h1 style="margin-left: 32px; font-size: 24px;">IconSVG</h1>
+                        <button class="close-listIcon" type="button"
+                          style="margin-right: 20px; border: none; background: transparent;">
+                          <i class="fa fa-times" style="color: red; font-size: 25px"></i>
+                        </button>
+                      </div>
+                      <br>
+                      <div style="margin: 0 16px;">
+                        <div
+                          style="display: flex; width: fit-content; height: 36px; align-items: center; border: 1px solid #ccc;border-radius: 4px; overflow: hidden;">
+                          <input type="text" placeholder="Search" id="svg-search"
+                            style="margin: 0; padding: 0 16px; border: none;">
+                          <button type="button" class="btn btn-default" style="height: 40px; border: none;">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <br>
+                      <p id="not-found" style="margin: 8px 16px;">
+                        No svg found, please change search criteria...
+                      </p>
+                      <div id="iconSVG" style="margin: 8px 16px;">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="hidden symbol-popup-class style-popup-symbol" id="listOfSymbol">
+                    <div>
+                      <div class="header-symbol" style="padding: 4px 16px;">
+                        <h1 style="font-size: 24px;">Symbols</h1>
+                        <button class="close-listIcon" type="button"
+                          style="margin-top: 10px; border: none; background: transparent;">
+                          <i class="fa fa-times" style="color: red; font-size: 25px"></i>
+                        </button>
+                      </div>
+
+                      <br>
+
+                      <label><b>Toán</b></label>
+                      <div id='math-symbol'></div>
+
+                      <label><b>Vật lý</b></label>
+                      <div id='physisc-symbol'></div>
+
+                      <label><b>Hóa học</b></label>
+                      <div id='chemistry-symbol'></div>
+
+                      <label><b>Sinh học</b></label>
+                      <div id='biology-symbol'>
+                        <p class="tooltip-wrap">
+                          <img src="assets/images/latex/men.png">
+                        </p>
+                        <p class="tooltip-wrap">
+                          <img src="assets/images/latex/women.png">
+                        </p>
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <div class="block-right">
+                    <p class="block-time hidden">
+                      <img src="assets/icons/icon_Timer.png" alt="Timer">
+                    </p>
+                    <span class="time-class fr">
+                      00:30:00
+                    </span>
+                    <p id="time-action">
+                      <img src="assets/images/regular/icon_Main_Menu_Trigger.png" />
+                    </p>
+                    <div class="time-menu-popup hidden">
+                      <ul>
+                        <li class="btn-extend-time">
+                          <img src="assets/images/regular/icon_menu_Extend_Time.png" />
+                          <span>
+                            Extend Time
+                          </span>
+                        </li>
+                        <li class="btn-close-session">
+                          <img src="assets/images/regular/icon_menu_Exit.png" />
+                          <span>
+                            Exit Tutoring Seassion
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="popup-time-extend hidden">
+                      <div class="pte-content">
+                        <div class="pte-top">
+                          <div class="icon">
+                            <img src="assets/images/regular/icon_notice.png" />
+                          </div>
+                          <div class="ct">
+                            <span class="notice">
+                              Extension requires <strong>
+                                15 points for 30
+                                munites
+                              </strong>
+                            </span>
+                            <div class="ctc">
+                              <label>
+                                Extension time:
+                              </label>
+                              <select name="time" value="30" data-time="15">
+                                <option value="30">30 min</option>
+                                <option value="60">01 hr</option>
+                                <option value="90">01 hr 30 min</option>
+                                <option value="120">02 hr</option>
+                                <option value="150">02 hr 30 min</option>
+                                <option value="180">03 hr</option>
+                                <option value="210">03 hr 30 min</option>
+                                <option value="240">04 hr</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="pte-bot">
+                          <div class="icon">
+                            <img src="assets/images/regular/icon_menu_Points.png" />
+                          </div>
+                          <div class="time-info">
+                            <ul>
+                              <li class="total">
+                                <label>
+                                  Time Extension Fee
+                                </label>
+                                <span>15 points</span>
+                              </li>
+                              <li class="user-point">
+                                <label>
+                                  My Total Points
+                                </label>
+                                <span> points</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="pte-btn">
+                          <button type="button" class="pte-ok">
+                            Accept
+                          </button>
+                          <button type="button" class="pte-close">
+                            Decline
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="btn-responsive">
+                    <p id="toolbar-expand-btn"><i class="fa fa-bars" aria-hidden="true"></i></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <!-- DRAWING -->
+        <div style="position: relative; flex: 1;">
+          <div class="row wrapper_contend" id="wrapper">
+
+            <div class="col-12 main-content main-notepad">
+              <div id="cursors">
+
+              </div>
+              <video height="360" width="480" id="video1" style="display: none" muted="" class="canvas-img">
+                <!-- <source src="http://html5demos.com/assets/dizzy.mp4" crossorigin>
+                        <source src="http://html5demos.com/assets/dizzy.ogv" crossorigin> -->
+              </video>
+              </video>
+              <div id="panel" class="panel">
+                <canvas id="canvas_draw" style="position: relative; z-index: 10; top: 0; bottom: 0;"></canvas>
+                <svg height="100" width="100" class="hidden" id="port-id">
+                  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+                </svg>
+              </div>
+              <div id="divrubber" style="z-index: 10;" title="drag to erase with checkbox signed"
+                alt="drag to erase with checkbox signed">
+                <div id="controlrubber" class="css-img-erase"></div>
+              </div>
+
+              <div id="edit-form" style="z-index: 10; visibility: hidden;">
+                <div class="container">
+                  <div class="btn-toolbar btn-group">
+                    <div class="group btn-group">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-link" data-toggle="dropdown">
+                          <i class="fa fa-font" aria-hidden="true"></i>
+                        </button>
+                        <ul id='font' class="dropdown-menu" role="menu">
+                          <li value="Time New Roman"><a>Times New Roman</a></li>
+                          <li value="Quicksand"><a>Quicksand</a></li>
+                          <li value="VT323"><a>VT323</a></li>
+                          <li value="Inconsolata"><a>Inconsolata</a></li>
+                          <li value="Pacifico"><a>Pacifico</a></li>
+                        </ul>
+                      </div>
+                      <button id="align" type="button" class="btn btn-link"><i class="fa fa-align-center"
+                          aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="group btn-group">
+                      <div class="btn-group">
+                        <button id="current-size" type="button" class="btn btn-link" data-toggle="dropdown">
+                          <span>Auto</span>
+                          <span class="caret"></span>
+                        </button>
+                        <ul id='size' class="dropdown-menu" role="menu">
+                          <li value="4"><a>4</a></li>
+                          <li value="8"><a>8</a></li>
+                          <li value="10"><a>10</a></li>
+                          <li value="12"><a>12</a></li>
+                          <li value="14"><a>14</a></li>
+                          <li value="18"><a>18</a></li>
+                          <li value="24"><a>24</a></li>
+                          <li value="32"><a>32</a></li>
+                          <li value="48"><a>48</a></li>
+                          <li value="64"><a>64</a></li>
+                        </ul>
+                      </div>
+                      <button id="bold" type="button" class="btn btn-link"><i class="fa fa-bold"
+                          aria-hidden="true"></i></button>
+                      <button id="italic" type="button" class="btn btn-link"><i class="fa fa-italic"
+                          aria-hidden="true"></i></span></button>
+                      <button id="underline" type="button" class="btn btn-link"><i class="fa fa-underline"
+                          aria-hidden="true"></i></button>
+                    </div>
+
+                    <div class="group btn-group">
+                      <button type="button" class="btn btn-link" data-toggle="dropdown">
+                        <img src="assets/images/notepad/wavy-line.png" style="width: 28px; height: 28px;">
+                      </button>
+                      <ul id="path-menu" class="dropdown-menu" role="menu" style="display: none; min-width: 220px;">
+                        <li>
+                          <a>
+                            <span>Create Path</span>
+                            <button id="pathCreate" type="button" class="btn btn-default"
+                              style="width: fit-content; height: fit-content;">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Object Path</span>
+                            <input id="pathObj" value="Empty" type="text"
+                              style="margin: 0; padding: 4px 8px; width: 80px; font-size: 12px; border-radius: 4px;"></input>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Repeat</span>
+                            <!-- <label for="pathMovingRepeat"></label> -->
+                            <input id="pathMovingRepeat" type="checkbox" style="margin: 0; cursor: pointer;">
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Speed</span>
+                            <input id="pathMovingSpeed" type="number" min="1" max="100" value="1"
+                              style="margin: 0; cursor: pointer;">
+                          </a>
+                        </li>
+                        <li>
+                          <a class="input-container">
+                            <span>Sound Moving</span>
+                            <input id="soundMoving" type="file" accept="audio/*">
+                            <label for="soundMoving" style="color: #aaa; margin: 0; font-size: 12px;">
+                              Empty
+                            </label>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Mode</span>
+                            <div id="pathMovingMode"
+                              style="position: relative; padding: 4px; border: 1px solid #999; border-radius: 15px;">
+                              <span style="margin-right: 4px;">ON</span>
+                              <span>OFF</span>
+                              <span id="pathMovingMark"
+                                style="position: absolute; top: 1px; left: 1px; height: 94%; width: 48%; border-radius: 15px; background: #aaa; transition: all 0.2s ease; visibility: inherit;"></span>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="group btn-group">
+                      <button type="button" class="btn btn-link" data-toggle="dropdown">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                      </button>
+                      <ul id="sub-menu" class="dropdown-menu" role="menu" style="display: none; min-width: 280px;">
+
+                        <li id="sub-menu-lineStyle">
+                          <a>
+                            <span>Line Style</span>
+                            <select id="lineStyle">
+                              <option value="solid" selected>Solid</option>
+                              <option value="dash">Dash</option>
+                              <!-- <option value="shadow">Shadow</option> -->
+                            </select>
+                          </a>
+                        </li>
+                        <li id="sub-menu-objBlink">
+                          <a>
+                            <span>Blink object</span>
+                            <button id="objBlink" class="btn btn-default"
+                              style="width: fit-content; height: fit-content; padding: 2px 10px;">OFF</button>
+                          </a>
+                        </li>
+                        <li id="sub-menu-textId">
+                          <a>
+                            <span>Object Code</span>
+                            <input id="objectCode" type="text">
+                          </a>
+                        </li>
+                        <li id="sub-menu-replaceImg">
+                          <a class="input-container">
+                            <span>Replace Image</span>
+                            <input id="replaceImg" type="file" accept="image/*">
+                            <label for="replaceImg" style="color: #aaa; margin: 0;">
+                              No image available
+                            </label>
+                          </a>
+                        </li>
+                        <li id="sub-menu-textColor">
+                          <a>
+                            <span>Text color</span>
+                            <input id="textColor" type="color" value="#000000">
+                          </a>
+                        </li>
+                        <li id="sub-menu-borderColor">
+                          <a>
+                            <span>Border color</span>
+                            <input id="borderColor" type="color" value="#000000">
+                          </a>
+                        </li>
+
+                        <li id="sub-menu-textBoxRadiusText">
+                          <a>
+                            <span>TexBox border radius</span>
+                            <input id="textBoxRadiusText" type="number" value="1" min="1" max="50">
+                          </a>
+                        </li>
+
+                        <li id="sub-menu-lockTextBox">
+                          <a>
+                            <span>Lock Control</span>
+                            <select id="lockTextBox">
+                              <option value="unlock" selected>Unlock</option>
+                              <option value="lock">Lock</option>
+                            </select>
+                          </a>
+                        </li>
+
+                        <li id="sub-menu-shadowText">
+                          <a>
+                            <span>TextBox Shadow</span>
+                            <select id="textBoxShadow">
+                              <option value="no shadow" selected>No shadow</option>
+                              <option value="shadow">Shadow</option>
+                            </select>
+                          </a>
+                        </li>
+
+                        <li id="sub-menu-fillColor">
+                          <a>
+                            <span>Fill color</span>
+                            <input id="fillColor" type="color" value="#000000">
+                          </a>
+                        </li>
+
+                        <li id="sub-menu-borderWidth">
+                          <a>
+                            <span>Border width</span>
+                            <input id="borderWidth" type="number" value="1" min="1" max="10">
+                          </a>
+                        </li>
+                        <li id="sub-menu-curve">
+                          <a>
+                            <span>Curve</span>
+                            <input id="objCurve" type="number" value="0" min="0">
+                          </a>
+                        </li>
+                        <li id="sub-menu-shadow">
+                          <a>
+                            <span>Shadow</span>
+                            <button id="objShadow" type="button" class="btn btn-default"
+                              style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                              On
+                            </button>
+                          </a>
+                        </li>
+                        <!-- <li id="sub-menu-snap">
+                                            <a>
+                                                <span>Snap</span>
+                                                <button id="snap" type="button" class="btn btn-default" style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                                                    Off
+                                                </button>
+                                            </a>
+                                        </li> -->
+                        <li id="sub-menu-fixed" style="display: block">
+                          <a>
+                            <span>Fixed</span>
+                            <button id="objFixed" type="button" class="btn btn-default"
+                              style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                              On
+                            </button>
+                          </a>
+                        </li>
+                        <li id="sub-menu-vessel" style="display: none">
+                          <a>
+                            <span>Vessel</span>
+                            <button id="objVessel" type="button" class="btn btn-default"
+                              style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                              On
+                            </button>
+                          </a>
+                        </li>
+                        <li id="sub-menu-bring">
+                          <a>
+                            <span>Bring to</span>
+                            <button id="objBring" type="button" class="btn btn-default"
+                              style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                              Back
+                            </button>
+                          </a>
+                        </li>
+                        <li id="sub-menu-background">
+                          <a>
+                            <span>Background</span>
+                            <button id="bgToggle" type="button" class="btn btn-default"
+                              style="width: fit-content; height: fit-content;">
+                              On
+                            </button>
+                          </a>
+                        </li>
+                        <hr style="margin: 10px 0;">
+                        <li>
+                          <div
+                            style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px;">
+                            <span>Object Select</span>
+                            <div
+                              style="width: 30%; display: flex; justify-content: space-between; align-items: center;">
+                              <input id="objSelect" type="checkbox" style="margin: 0;">
+                              <span id="objSelectDropDown"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                            </div>
+                          </div>
+                          <ul id="objSelectList" style="display: none; border-top: 1px solid #999;">
+                            <li>
+                              <a>
+                                <span>Status</span>
+                                <button id="toggleObjStatus" type="button" class="btn btn-danger"
+                                  style="width: fit-content; height: fit-content; padding: 0 8px;">
+                                  <i class="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                              </a>
+                            </li>
+                            <li>
+                              <a>
+                                <span>Color Selected</span>
+                                <input id="colorSelected" type="color" value="#ffffff">
+                              </a>
+                            </li>
+                            <li>
+                              <a>
+                                <span>Color Unselected</span>
+                                <input id="colorUnselected" type="color" value="#ffffff">
+                              </a>
+                            </li>
+                            <li>
+                              <a class="input-container">
+                                <span>Sound Selected</span>
+                                <input id="soundSelected" type="file" accept="audio/*">
+                                <label for="soundSelected" style="color: #aaa; margin: 0;">
+                                  selected.mp3
+                                </label>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="input-container">
+                                <span>Sound Unselected</span>
+                                <input id="soundUnselected" type="file" accept="audio/*">
+                                <label for="soundUnselected" style="color: #aaa; margin: 0;">
+                                  unselected.mp3
+                                </label>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                        <hr style="margin: 10px 0;">
+                        <li>
+                          <div
+                            style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px;">
+                            <span>Object Input</span>
+                            <div
+                              style="width: 30%; display: flex; justify-content: space-between; align-items: center;">
+                              <input id="objInput" type="checkbox" style="margin: 0;">
+                              <span id="objInputDropDown"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                            </div>
+                          </div>
+                          <ul id="objInputList" style="display: none; border-top: 1px solid #999;">
+                            <li>
+                              <a class="input-container">
+                                <span>Sound Typing</span>
+                                <input id="soundTyping" type="file" accept="audio/*">
+                                <label for="soundTyping" style="color: #aaa; margin: 0;">
+                                  typing.mp3
+                                </label>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                        <hr style="margin: 10px 0;">
+                        <li>
+                          <div
+                            style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px;">
+                            <span>Object Snap</span>
+                            <div
+                              style="width: 30%; display: flex; justify-content: space-between; align-items: center;">
+                              <input id="objSnap" type="checkbox" style="margin: 0;">
+                              <span id="objSnapDropDown"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                            </div>
+                          </div>
+                          <ul id="objSnapList" style="display: none; border-top: 1px solid #999;">
+                            <li>
+                              <a class="input-container">
+                                <span>Sound Snap</span>
+                                <input id="soundSnap" type="file" accept="audio/*">
+                                <label for="soundSnap" style="color: #aaa; margin: 0;">
+                                  snap.mp3
+                                </label>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                        <hr style="margin: 10px 0;">
+                        <li>
+                          <div
+                            style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px;">
+                            <span>Object Control</span>
+                            <div
+                              style="width: 30%; display: flex; justify-content: space-between; align-items: center;">
+                              <input id="objControl" type="checkbox" style="margin: 0;">
+                              <span id="objControlDropDown"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                            </div>
+                          </div>
+                          <ul id="objControlList" style="display: none; border-top: 1px solid #999;">
+                            <li>
+                              <a>
+                                <span>Angle</span>
+                                <input id="objAngle" type="number" value="0" min="0">
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="group btn-group">
+                      <button id="close-editor" type="button" class="btn btn-link">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div id="pathBtns" style="position: absolute; visibility: hidden; top: 20px; left: 160px;">
+                  <button id="pathToggleDrawing" type="button" class="btn btn-success"
+                    style="width: fit-content; height: fit-content;"></button>
+                  <button id="closePathDrawMode" type="button" class="btn btn-danger"
+                    style="width: fit-content; height: fit-content;">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div id="edit-form-textbox" style="z-index: 10; visibility: hidden;">
+                <div class="container">
+                  <div class="btn-toolbar btn-group">
+                    <div class="group btn-group latex">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-link" data-toggle="dropdown">
+                          <i class="fa fa-font" aria-hidden="true"></i>
+                        </button>
+                        <ul id='font-textbox' class="dropdown-menu" role="menu">
+                          <li value="Time New Roman"><a>Times New Roman</a></li>
+                          <li value="Quicksand"><a>Quicksand</a></li>
+                          <li value="VT323"><a>VT323</a></li>
+                          <li value="Inconsolata"><a>Inconsolata</a></li>
+                          <li value="Pacifico"><a>Pacifico</a></li>
+                        </ul>
+                      </div>
+                      <button id="align-textbox" type="button" class="btn btn-link"><i class="fa fa-align-center"
+                          aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="group btn-group">
+                      <div class="btn-group">
+                        <button id="current-size-textbox" type="button" class="btn btn-link" data-toggle="dropdown">
+                          <span>Auto</span>
+                          <span class="caret"></span>
+                        </button>
+                        <ul id='size-textbox' class="dropdown-menu" role="menu">
+                          <li value="10"><a>10</a></li>
+                          <li value="12"><a>12</a></li>
+                          <li value="14"><a>14</a></li>
+                          <li value="18"><a>18</a></li>
+                          <li value="24"><a>24</a></li>
+                          <li value="32"><a>32</a></li>
+                          <li value="48"><a>48</a></li>
+                          <li value="64"><a>64</a></li>
+                          <li value="86"><a>86</a></li>
+                        </ul>
+                      </div>
+                      <button id="bold-textbox" type="button" class="btn btn-link latex"><i class="fa fa-bold"
+                          aria-hidden="true"></i></button>
+                      <button id="italic-textbox" type="button" class="btn btn-link latex"><i class="fa fa-italic"
+                          aria-hidden="true"></i></span></button>
+                      <button id="underline-textbox" type="button" class="btn btn-link latex"><i class="fa fa-underline"
+                          aria-hidden="true"></i></button>
+                    </div>
+                    <div class="group btn-group">
+                      <button id="menuMore-textbox" type="button" class="btn btn-link">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                      </button>
+                      <ul id="sub-menu-textbox" class="dropdown-menu"
+                        style="display: block; visibility: hidden; min-width: 280px;">
+                        <li id="sub-menu-textColor-textbox">
+                          <a>
+                            <span>Text color</span>
+                            <input id="textColor-textbox" type="color" value="#000000">
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="group btn-group">
+                      <button id="close-editor-textbox" type="button" class="btn btn-link">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="attach-file-popup-class hidden device-popup" style="min-width: 300px;" id="attach-file-popup">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <div class="input-container">
+                    <input id="attach-file-input" type="file" multiple accept=".pdf, .docx, .xlsx">
+                    <label for="attach-file-input">
+                      <img src="assets/images/notepad/add-file.jpg" style="width: 24px; height: 24px;" />
+                    </label>
+
+                    <div style="position: relative; display: inline-block; margin-left: 6px;">
+                      <button id="attach-link-file" style="border: none; background: transparent;">
+                        <img src="assets/images/notepad/link.png" style="width: 24px; height: 24px;" />
+                      </button>
+                      <div id="link-file-container"
+                        style="position: absolute; top: -12px; left: -65px; display: none; z-index: 10;">
+                        <div
+                          style="display: flex; padding: 10px 16px; background: #fff; border: 1px solid #ccc; border-radius: 4px;">
+                          <input id="link-file" type="text"
+                            style="padding: 8px 8px; width: auto; height: auto; margin: 0 4px; background: #fff; border: 1px solid #ccc; border-radius: 4px; opacity: 1;">
+                          <button id="link-file-open" class="btn btn-success">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                          </button>
+                          <button id="link-file-close" class="btn btn-danger" style="margin-left: 8px;">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button id="attach-file-close" type="button" class="btn btn-danger">X</button>
+                </div>
+
+                <div class="edit-form-svg">
+                  <div class="btn-toolbar btn-group">
+                    <div class="group btn-group">
+                      <div class="btn-group">
+                        <button id="current-size-file" type="button" class="btn btn-link" data-toggle="dropdown">
+                          <span>Auto</span>
+                          <span class="caret"></span>
+                        </button>
+                        <ul id='size-file' class="dropdown-menu" role="menu">
+                          <li value="4"><a>4</a></li>
+                          <li value="8"><a>8</a></li>
+                          <li value="10"><a>10</a></li>
+                          <li value="12"><a>12</a></li>
+                          <li value="14"><a>14</a></li>
+                          <li value="18"><a>18</a></li>
+                          <li value="24"><a>24</a></li>
+                          <li value="32"><a>32</a></li>
+                          <li value="48"><a>48</a></li>
+                          <li value="64"><a>64</a></li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="group btn-group">
+                      <button id="pathMover-file" type="button" class="btn btn-link">
+                        <img src="assets/images/notepad/wavy-line.png" style="width: 28px; height: 28px;">
+                      </button>
+                      <ul id="path-menu-file" class="dropdown-menu"
+                        style="display: block; visibility: hidden; min-width: 220px;">
+                        <li>
+                          <a>
+                            <span>Create Path</span>
+                            <button id="pathCreate-file" type="button" class="btn btn-default"
+                              style="width: fit-content; height: fit-content;">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Object Path</span>
+                            <input id="pathObj-file" value="Empty" type="text"
+                              style="margin: 0; padding: 4px 8px; width: 80px; font-size: 12px; border-radius: 4px;"></input>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Repeat</span>
+                            <!-- <label for="pathMovingRepeat"></label> -->
+                            <input id="pathMovingRepeat-file" type="checkbox" style="margin: 0; cursor: pointer;">
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Speed</span>
+                            <input id="pathMovingSpeed-file" type="number" min="1" max="100" value="1"
+                              style="margin: 0; cursor: pointer;">
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Mode</span>
+                            <div id="pathMovingMode-file"
+                              style="position: relative; padding: 4px; border: 1px solid #999; border-radius: 15px;">
+                              <span style="margin-right: 4px;">ON</span>
+                              <span>OFF</span>
+                              <span id="pathMovingMark-file"
+                                style="position: absolute; top: 1px; left: 1px; height: 94%; width: 48%; border-radius: 15px; background: #aaa; transition: all 0.2s ease; visibility: inherit;"></span>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="group btn-group">
+                      <button id="menuMore-file" type="button" class="btn btn-link">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                      </button>
+                      <ul id="sub-menu-file" class="dropdown-menu"
+                        style="display: block; visibility: hidden; min-width: 280px;">
+
+                        <!-- <li id="sub-menu-lineStyle-file">
+                      <a>
+                        <span>Line Style</span>
+                        <select id="lineStyle-file">
+                          <option value="solid" selected>Solid</option>
+                          <option value="dash">Dash</option>
+                          <option value="shadow">Shadow</option>
+                        </select>
+                      </a>
+                    </li> -->
+                        <li id="sub-menu-objBlink-file">
+                          <a>
+                            <span>Blink object</span>
+                            <button id="objBlink-file" class="btn btn-default"
+                              style="width: fit-content; height: fit-content; padding: 2px 10px;">OFF</button>
+                          </a>
+                        </li>
+                        <li id="sub-menu-textColor-file">
+                          <a>
+                            <span>Text color</span>
+                            <input id="textColor-file" type="color" value="#000000">
+                          </a>
+                        </li>
+                        <li id="sub-menu-borderColor-file">
+                          <a>
+                            <span>Border color</span>
+                            <input id="borderColor-file" type="color" value="#000000">
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div id="pathBtns-file" style="position: absolute; visibility: hidden; top: 120px; right: 10px;">
+                  <button id="pathToggleDrawing-file" type="button" class="btn btn-success"
+                    style="width: fit-content; height: fit-content;"></button>
+                  <button id="closePathDrawMode-file" type="button" class="btn btn-danger"
+                    style="width: fit-content; height: fit-content;">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <ul class="list" style="margin-top: 10px;"></ul>
+                <div id="attach-file-container" style="position: relative; display: none;">
+                  <iframe id="attach-file-view" src=""
+                    style="position: absolute; top: -150px; left: -70px; width: 600px; height: 600px;  border-width: 2px;">
+                  </iframe>
+                  <button id="attach-file-view-close" type="button" class="btn btn-danger"
+                    style="position: absolute; top: -150px; right: -290px;">X</button>
+
+                </div>
+              </div>
+              <div class="mic-popup-class hidden device-popup" id="mic-popup">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <button id="mic-record" type="button" class="btn btn-success">
+                    <i class="fa fa-microphone" aria-hidden="true"></i>
+                  </button>
+                  <button id="mic-upload" type="button" class="btn btn-success">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                  </button>
+                  <button id="mic-close" type="button" class="btn btn-danger">X</button>
+                </div>
+                <input id="mic-file" class="hidden" type="file" name="mic-file" accept="audio/*">
+                <audio id="micRecorded" src="" controls crossorigin="anonymous"></audio>
+
+                <div class="edit-form-svg">
+                  <div class="btn-toolbar btn-group">
+                    <div class="group btn-group">
+                      <div class="btn-group">
+                        <button id="current-size-mic" type="button" class="btn btn-link" data-toggle="dropdown">
+                          <span>Auto</span>
+                          <span class="caret"></span>
+                        </button>
+                        <ul id='size-mic' class="dropdown-menu" role="menu">
+                          <li value="4"><a>4</a></li>
+                          <li value="8"><a>8</a></li>
+                          <li value="10"><a>10</a></li>
+                          <li value="12"><a>12</a></li>
+                          <li value="14"><a>14</a></li>
+                          <li value="18"><a>18</a></li>
+                          <li value="24"><a>24</a></li>
+                          <li value="32"><a>32</a></li>
+                          <li value="48"><a>48</a></li>
+                          <li value="64"><a>64</a></li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="group btn-group">
+                      <button id="pathMover-mic" type="button" class="btn btn-link">
+                        <img src="assets/images/notepad/wavy-line.png" style="width: 28px; height: 28px;">
+                      </button>
+                      <ul id="path-menu-mic" class="dropdown-menu"
+                        style="display: block; visibility: hidden; min-width: 220px;">
+                        <li>
+                          <a>
+                            <span>Create Path</span>
+                            <button id="pathCreate-mic" type="button" class="btn btn-default"
+                              style="width: fit-content; height: fit-content;">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Object Path</span>
+                            <input id="pathObj-mic" value="Empty" type="text"
+                              style="margin: 0; padding: 4px 8px; width: 80px; font-size: 12px; border-radius: 4px;"></input>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Repeat</span>
+                            <!-- <label for="pathMovingRepeat"></label> -->
+                            <input id="pathMovingRepeat-mic" type="checkbox" style="margin: 0; cursor: pointer;">
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Speed</span>
+                            <input id="pathMovingSpeed-mic" type="number" min="1" max="100" value="1"
+                              style="margin: 0; cursor: pointer;">
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Mode</span>
+                            <div id="pathMovingMode-mic"
+                              style="position: relative; padding: 4px; border: 1px solid #999; border-radius: 15px;">
+                              <span style="margin-right: 4px;">ON</span>
+                              <span>OFF</span>
+                              <span id="pathMovingMark-mic"
+                                style="position: absolute; top: 1px; left: 1px; height: 94%; width: 48%; border-radius: 15px; background: #aaa; transition: all 0.2s ease; visibility: inherit;"></span>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="group btn-group">
+                      <button id="menuMore-mic" type="button" class="btn btn-link">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                      </button>
+                      <ul id="sub-menu-mic" class="dropdown-menu"
+                        style="display: block; visibility: hidden; min-width: 280px;">
+
+                        <!-- <li id="sub-menu-lineStyle-mic">
+                      <a>
+                        <span>Line Style</span>
+                        <select id="lineStyle-mic">
+                          <option value="solid" selected>Solid</option>
+                          <option value="dash">Dash</option>
+                          <option value="shadow">Shadow</option>
+                        </select>
+                      </a>
+                    </li> -->
+                        <li id="sub-menu-objBlink-mic">
+                          <a>
+                            <span>Blink object</span>
+                            <button id="objBlink-mic" class="btn btn-default"
+                              style="width: fit-content; height: fit-content; padding: 2px 10px;">OFF</button>
+                          </a>
+                        </li>
+                        <li id="sub-menu-textColor-mic">
+                          <a>
+                            <span>Text color</span>
+                            <input id="textColor-mic" type="color" value="#000000">
+                          </a>
+                        </li>
+                        <li id="sub-menu-borderColor-mic">
+                          <a>
+                            <span>Border color</span>
+                            <input id="borderColor-mic" type="color" value="#000000">
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div id="pathBtns-mic" style="position: absolute; visibility: hidden; top: 120px; right: 10px;">
+                  <button id="pathToggleDrawing-mic" type="button" class="btn btn-success"
+                    style="width: fit-content; height: fit-content;"></button>
+                  <button id="closePathDrawMode-mic" type="button" class="btn btn-danger"
+                    style="width: fit-content; height: fit-content;">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <ul class="list" style="margin-top: 10px;"></ul>
+              </div>
+              <div class="camera-popup-class device-popup hidden" id="camera-popup">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <button id="camera-record" type="button" class="btn btn-success">
+                    <i class="fa fa-video-camera" aria-hidden="true"></i>
+                  </button>
+                  <button id="camera-upload" type="button" class="btn btn-success">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                  </button>
+                  <button id="camera-close" type="button" class="btn btn-danger">X</button>
+                </div>
+                <input id="camera-file" class="hidden" type="file" name="camera-file" accept="video/*">
+                <video id="cameraRecorded" width="300" controls crossorigin="anonymous"></video>
+                <video id="cameraRecording" width="300" style="display: none;"></video>
+
+                <div class="edit-form-svg">
+                  <div class="btn-toolbar btn-group">
+                    <div class="group btn-group">
+                      <div class="btn-group">
+                        <button id="current-size-camera" type="button" class="btn btn-link" data-toggle="dropdown">
+                          <span>Auto</span>
+                          <span class="caret"></span>
+                        </button>
+                        <ul id='size-camera' class="dropdown-menu" role="menu">
+                          <li value="4"><a>4</a></li>
+                          <li value="8"><a>8</a></li>
+                          <li value="10"><a>10</a></li>
+                          <li value="12"><a>12</a></li>
+                          <li value="14"><a>14</a></li>
+                          <li value="18"><a>18</a></li>
+                          <li value="24"><a>24</a></li>
+                          <li value="32"><a>32</a></li>
+                          <li value="48"><a>48</a></li>
+                          <li value="64"><a>64</a></li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="group btn-group">
+                      <button id="pathMover-camera" type="button" class="btn btn-link">
+                        <img src="assets/images/notepad/wavy-line.png" style="width: 28px; height: 28px;">
+                      </button>
+                      <ul id="path-menu-camera" class="dropdown-menu"
+                        style="display: block; visibility: hidden; min-width: 220px;">
+                        <li>
+                          <a>
+                            <span>Create Path</span>
+                            <button id="pathCreate-camera" type="button" class="btn btn-default"
+                              style="width: fit-content; height: fit-content;">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Object Path</span>
+                            <input id="pathObj-camera" value="Empty" type="text"
+                              style="margin: 0; padding: 4px 8px; width: 80px; font-size: 12px; border-radius: 4px;"></input>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Repeat</span>
+                            <!-- <label for="pathMovingRepeat"></label> -->
+                            <input id="pathMovingRepeat-camera" type="checkbox" style="margin: 0; cursor: pointer;">
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Speed</span>
+                            <input id="pathMovingSpeed-camera" type="number" min="1" max="100" value="1"
+                              style="margin: 0; cursor: pointer;">
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Moving Mode</span>
+                            <div id="pathMovingMode-camera"
+                              style="position: relative; padding: 4px; border: 1px solid #999; border-radius: 15px;">
+                              <span style="margin-right: 4px;">ON</span>
+                              <span>OFF</span>
+                              <span id="pathMovingMark-camera"
+                                style="position: absolute; top: 1px; left: 1px; height: 94%; width: 48%; border-radius: 15px; background: #aaa; transition: all 0.2s ease; visibility: inherit;"></span>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="group btn-group">
+                      <button id="menuMore-camera" type="button" class="btn btn-link">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                      </button>
+                      <ul id="sub-menu-camera" class="dropdown-menu"
+                        style="display: block; visibility: hidden; min-width: 280px;">
+
+                        <!-- <li id="sub-menu-lineStyle-camera">
+                      <a>
+                        <span>Line Style</span>
+                        <select id="lineStyle-camera">
+                          <option value="solid" selected>Solid</option>
+                          <option value="dash">Dash</option>
+                          <option value="shadow">Shadow</option>
+                        </select>
+                      </a>
+                    </li> -->
+                        <li id="sub-menu-objBlink-camera">
+                          <a>
+                            <span>Blink object</span>
+                            <button id="objBlink-camera" class="btn btn-default"
+                              style="width: fit-content; height: fit-content; padding: 2px 10px;">OFF</button>
+                          </a>
+                        </li>
+                        <li id="sub-menu-textColor-camera">
+                          <a>
+                            <span>Text color</span>
+                            <input id="textColor-camera" type="color" value="#000000">
+                          </a>
+                        </li>
+                        <li id="sub-menu-borderColor-camera">
+                          <a>
+                            <span>Border color</span>
+                            <input id="borderColor-camera" type="color" value="#000000">
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div id="pathBtns-camera" style="position: absolute; visibility: hidden; top: 120px; right: 10px;">
+                  <button id="pathToggleDrawing-camera" type="button" class="btn btn-success"
+                    style="width: fit-content; height: fit-content;"></button>
+                  <button id="closePathDrawMode-camera" type="button" class="btn btn-danger"
+                    style="width: fit-content; height: fit-content;">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <ul class="list" style="margin-top: 10px;"></ul>
+              </div>
+
+              <div id="videoChat" class="hidden" style="display: block;">
+                <div id="closeVideo"></div>
+                <div id="loading"></div>
+                <div id="video" style="width: 100%; height: 100%"></div>
+              </div>
+              <div id="yotubeVideo">
+                <div class="item-video hidden" id="video-1"
+                  style="top: 50px;left: 100px;z-index: 100; width: 30%; height: 50%; background: #000; padding: 20px;">
+                  <input class="ytb-close-btn" type="button" value="X"
+                    style="color: red; position: absolute; right: 0; top: 0; font-size: 20px;">
+                  <iframe id="ytbIframe" credentialless></iframe>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- edit-form-quiz -->
+          <div id="edit-form-quiz" style="z-index: 10; visibility: hidden;">
+            <div class="container">
+              <div class="btn-toolbar btn-group">
+                <div class="group btn-group">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-link" data-toggle="dropdown">
+                      <i class="fa fa-font" aria-hidden="true"></i>
+                    </button>
+                    <ul id='fontTextBox' class="dropdown-menu" role="menu">
+                      <li value="Time New Roman"><a>Times New Roman</a></li>
+                      <li value="Quicksand"><a>Quicksand</a></li>
+                      <li value="VT323"><a>VT323</a></li>
+                      <li value="Inconsolata"><a>Inconsolata</a></li>
+                      <li value="Pacifico"><a>Pacifico</a></li>
+                    </ul>
+                  </div>
+                  <button id="alignTextBox" type="button" class="btn btn-link"><i class="fa fa-align-center"
+                      aria-hidden="true"></i></button>
+                </div>
+
+                <div class="group btn-group">
+                  <div class="btn-group">
+                    <button id="current-size" type="button" class="btn btn-link" data-toggle="dropdown">
+                      <span>Auto</span>
+                      <span class="caret"></span>
+                    </button>
+                    <ul id='sizeTextBox' class="dropdown-menu" role="menu">
+                      <li value="4"><a>4</a></li>
+                      <li value="8"><a>8</a></li>
+                      <li value="10"><a>10</a></li>
+                      <li value="12"><a>12</a></li>
+                      <li value="14"><a>14</a></li>
+                      <li value="18"><a>18</a></li>
+                      <li value="24"><a>24</a></li>
+                      <li value="32"><a>32</a></li>
+                      <li value="48"><a>48</a></li>
+                      <li value="64"><a>64</a></li>
+                    </ul>
+                  </div>
+                  <button id="boldTextBox" type="button" class="btn btn-link"><i class="fa fa-bold"
+                      aria-hidden="true"></i></button>
+                  <button id="italicTextBox" type="button" class="btn btn-link"><i class="fa fa-italic"
+                      aria-hidden="true"></i></span></button>
+                  <button id="underlineTextBox" type="button" class="btn btn-link"><i class="fa fa-underline"
+                      aria-hidden="true"></i></button>
+                </div>
+
+                <div class="group btn-group">
+                  <button type="button" class="btn btn-link" data-toggle="dropdown">
+                    <img src="assets/images/notepad/wavy-line.png" style="width: 28px; height: 28px;">
+                  </button>
+                  <ul id="path-menu" class="dropdown-menu" role="menu" style="display: none; min-width: 220px;">
+                    <li>
+                      <a>
+                        <span>Create Path</span>
+                        <button id="pathCreate" type="button" class="btn btn-default"
+                          style="width: fit-content; height: fit-content;">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span>Object Path</span>
+                        <input id="pathObj" value="Empty" type="text"
+                          style="margin: 0; padding: 4px 8px; width: 80px; font-size: 12px; border-radius: 4px;"></input>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span>Moving Repeat</span>
+                        <!-- <label for="pathMovingRepeat"></label> -->
+                        <input id="pathMovingRepeat" type="checkbox" style="margin: 0; cursor: pointer;">
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span>Moving Speed</span>
+                        <input id="pathMovingSpeed" type="number" min="1" max="100" value="1"
+                          style="margin: 0; cursor: pointer;">
+                      </a>
+                    </li>
+                    <li>
+                      <a class="input-container">
+                        <span>Sound Moving</span>
+                        <input id="soundMoving" type="file" accept="audio/*">
+                        <label for="soundMoving" style="color: #aaa; margin: 0; font-size: 12px;">
+                          Empty
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span>Moving Mode</span>
+                        <div id="pathMovingMode"
+                          style="position: relative; padding: 4px; border: 1px solid #999; border-radius: 15px;">
+                          <span style="margin-right: 4px;">ON</span>
+                          <span>OFF</span>
+                          <span id="pathMovingMark"
+                            style="position: absolute; top: 1px; left: 1px; height: 94%; width: 48%; border-radius: 15px; background: #aaa; transition: all 0.2s ease; visibility: inherit;"></span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="group btn-group">
+                  <button type="button" class="btn btn-link" data-toggle="dropdown">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                  </button>
+                  <ul id="sub-menu" class="dropdown-menu" role="menu" style="display: none; min-width: 280px;">
+                    <li id="sub-menu-textBoxShape">
+                      <a>
+                        <span>text Box Shape</span>
+                        <select id="textBoxShape">
+                          <option value="rect" selected>rect</option>
+                          <option value="circle">circle</option>
+                        </select>
+                      </a>
+                    </li>
+                    <li id="sub-menu-animeShapeEasing">
+                      <a>
+                        <span>Box animate</span>
+                        <select id="animeShapeEasing">
+                          <option>easeInQuad</option>
+                          <option>easeOutQuad</option>
+                          <option>easeInOutQuad</option>
+                          <option>easeInCubic</option>
+                          <option>easeOutCubic</option>
+                          <option>easeInOutCubic</option>
+                          <option>easeInQuart</option>
+                          <option>easeOutQuart</option>
+                          <option>easeInOutQuart</option>
+                          <option>easeInQuint</option>
+                          <option>easeOutQuint</option>
+                          <option>easeInOutQuint</option>
+                          <option>easeInSine</option>
+                          <option>easeOutSine</option>
+                          <option>easeInOutSine</option>
+                          <option>easeInExpo</option>
+                          <option>easeOutExpo</option>
+                          <option>easeInOutExpo</option>
+                          <option>easeInCirc</option>
+                          <option>easeOutCirc</option>
+                          <option>easeInOutCirc</option>
+                          <option>easeInElastic</option>
+                          <option>easeOutElastic</option>
+                          <option>easeInOutElastic</option>
+                          <option>easeInBack</option>
+                          <option>easeOutBack</option>
+                          <option>easeInOutBack</option>
+                          <option>easeInBounce</option>
+                          <option>easeOutBounce</option>
+                          <option>easeInOutBounce</option>
+                        </select>
+                      </a>
+                    </li>
+                    <li id="sub-menu-textBoxPosition">
+                      <a>
+                        <span>text Box Position</span>
+                        <select id="textBoxPosition">
+                          <option value="top" selected>Top</option>
+                          <option value="middle">Middle</option>
+                          <option value="bottom">Bottom</option>
+                        </select>
+                      </a>
+                    </li>
+                    <li id="sub-menu-shadowShape">
+                      <a>
+                        <span>shadow box</span>
+                        <select id="shadowShape">
+                          <option value="no shadow" selected>No shadow</option>
+                          <option value="shadow">Shadow</option>
+                        </select>
+                      </a>
+                    </li>
+                    <li id="sub-menu-textBoxRadius">
+                      <a>
+                        <span>Border radius</span>
+                        <select id="textBoxRadius">
+                          <option value="0" selected>0</option>
+                          <option value=8>8</option>
+                          <option value=9>9</option>
+                          <option value=10>10</option>
+                          <option value=11>11</option>
+                          <option value=12>12</option>
+                          <option value=13>13</option>
+                          <option value=14>14</option>
+                          <option value=15>15</option>
+                          <option value=20>20</option>
+                        </select>
+                      </a>
+                    </li>
+                    <li id="sub-menu-lineStyleShape">
+                      <a>
+                        <span>Line Style</span>
+                        <select id="lineStyleShape">
+                          <option value="solid" selected>Solid</option>
+                          <option value="dotted">Dot</option>
+                          <option value="dash">Dash</option>
+                          <!-- <option value="shadow">Shadow</option> -->
+                        </select>
+                      </a>
+                    </li>
+                    <li id="sub-menu-objectType">
+                      <a>
+                        <span>Object Type</span>
+                        <select id="selectObjectType">
+                          <option value="" selected>not select</option>
+                          <option value="question">Question</option>
+                          <option value="answer">Answer</option>
+                          <!-- <option value="shadow">Shadow</option> -->
+                        </select>
+                      </a>
+                    </li>
+                    <li id="sub-menu-objectResult">
+                      <a>
+                        <span>Object Result</span>
+                        <select id="selectObjectResult">
+                          <option value=false>False</option>
+                          <option value=true>True</option>
+                          <!-- <option value="shadow">Shadow</option> -->
+                        </select>
+                      </a>
+                    </li>
+                    <li id="sub-menu-objBlink">
+                      <a>
+                        <span>Blink object</span>
+                        <button id="objBlink" class="btn btn-default"
+                          style="width: fit-content; height: fit-content; padding: 2px 10px;">OFF</button>
+                      </a>
+                    </li>
+                    <li id="sub-menu-textId">
+                      <a>
+                        <span>Object Code</span>
+                        <input id="objectCode" type="text">
+                      </a>
+                    </li>
+                    <!-- change object name -->
+                    <li id="sub-menu-object-name">
+                      <a>
+                        <span>Object Name</span>
+                        <input id="objectNameInput" type="text">
+                      </a>
+                    </li>
+                    <li id="sub-menu-replaceImg">
+                      <a class="input-container">
+                        <span>Replace Image</span>
+                        <input id="replaceImg" type="file" accept="image/*">
+                        <label for="replaceImg" style="color: #aaa; margin: 0;">
+                          No image available
+                        </label>
+                      </a>
+                    </li>
+                    <li id="sub-menu-textColor">
+                      <a>
+                        <span>TextBox color</span>
+                        <input id="textBoxColorObject" type="color" value="#000000">
+                      </a>
+                    </li>
+                    <li id="sub-menu-borderColor">
+                      <a>
+                        <span>Border color Shape</span>
+                        <input id="borderColorShape" type="color" value="#000000">
+                      </a>
+                    </li>
+                    <li id="sub-menu-fillObjectColor">
+                      <a>
+                        <span>Fill Object Color</span>
+                        <input id="fillObjectColor" type="color" value="#000000">
+                      </a>
+                    </li>
+
+                    <li id="sub-menu-borderWidthShape">
+                      <a>
+                        <span>Border width Shape</span>
+                        <input id="borderWidthShape" type="number" value="1" min="1" max="10">
+                      </a>
+                    </li>
+                    <li id="sub-menu-curve">
+                      <a>
+                        <span>Curve</span>
+                        <input id="objCurve" type="number" value="0" min="0">
+                      </a>
+                    </li>
+                    <li id="sub-menu-shadow">
+                      <a>
+                        <span>Shadow</span>
+                        <button id="objShadow" type="button" class="btn btn-default"
+                          style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                          On
+                        </button>
+                      </a>
+                    </li>
+                    <!-- <li id="sub-menu-snap">
+                                            <a>
+                                                <span>Snap</span>
+                                                <button id="snap" type="button" class="btn btn-default" style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                                                    Off
+                                                </button>
+                                            </a>
+                                        </li> -->
+                    <li id="sub-menu-fixed" style="display: block">
+                      <a>
+                        <span>Fixed</span>
+                        <button id="objFixed" type="button" class="btn btn-default"
+                          style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                          On
+                        </button>
+                      </a>
+                    </li>
+                    <li id="sub-menu-vessel" style="display: none">
+                      <a>
+                        <span>Vessel</span>
+                        <button id="objVessel" type="button" class="btn btn-default"
+                          style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                          On
+                        </button>
+                      </a>
+                    </li>
+                    <li id="sub-menu-bring">
+                      <a>
+                        <span>Bring to</span>
+                        <button id="objBring" type="button" class="btn btn-default"
+                          style="width: fit-content; height: fit-content; padding: 2px 10px;">
+                          Back
+                        </button>
+                      </a>
+                    </li>
+                    <li id="sub-menu-background">
+                      <a>
+                        <span>Background</span>
+                        <button id="bgToggleShape" type="button" class="btn btn-default"
+                          style="width: fit-content; height: fit-content;">
+                          On
+                        </button>
+                      </a>
+                    </li>
+                    <hr style="margin: 10px 0;">
+                    <li>
+                      <div
+                        style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px;">
+                        <span>Object Select</span>
+                        <div style="width: 30%; display: flex; justify-content: space-between; align-items: center;">
+                          <input id="objSelect" type="checkbox" style="margin: 0;">
+                          <span id="objSelectDropDown"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                      <ul id="objSelectList" style="display: none; border-top: 1px solid #999;">
+                        <li>
+                          <a>
+                            <span>Status</span>
+                            <button id="toggleObjStatus" type="button" class="btn btn-danger"
+                              style="width: fit-content; height: fit-content; padding: 0 8px;">
+                              <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Color Selected</span>
+                            <input id="colorSelected" type="color" value="#ffffff">
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <span>Color Unselected</span>
+                            <input id="colorUnselected" type="color" value="#ffffff">
+                          </a>
+                        </li>
+                        <li>
+                          <a class="input-container">
+                            <span>Sound Selected</span>
+                            <input id="soundSelected" type="file" accept="audio/*">
+                            <label for="soundSelected" style="color: #aaa; margin: 0;">
+                              selected.mp3
+                            </label>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="input-container">
+                            <span>Sound Unselected</span>
+                            <input id="soundUnselected" type="file" accept="audio/*">
+                            <label for="soundUnselected" style="color: #aaa; margin: 0;">
+                              unselected.mp3
+                            </label>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <hr style="margin: 10px 0;">
+                    <li>
+                      <div
+                        style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px;">
+                        <span>Object Input</span>
+                        <div style="width: 30%; display: flex; justify-content: space-between; align-items: center;">
+                          <input id="objInput" type="checkbox" style="margin: 0;">
+                          <span id="objInputDropDown"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                      <ul id="objInputList" style="display: none; border-top: 1px solid #999;">
+                        <li>
+                          <a class="input-container">
+                            <span>Sound Typing</span>
+                            <input id="soundTyping" type="file" accept="audio/*">
+                            <label for="soundTyping" style="color: #aaa; margin: 0;">
+                              typing.mp3
+                            </label>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <hr style="margin: 10px 0;">
+                    <li>
+                      <div
+                        style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px;">
+                        <span>Object Snap</span>
+                        <div style="width: 30%; display: flex; justify-content: space-between; align-items: center;">
+                          <input id="objSnap" type="checkbox" style="margin: 0;">
+                          <span id="objSnapDropDown"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                      <ul id="objSnapList" style="display: none; border-top: 1px solid #999;">
+                        <li>
+                          <a class="input-container">
+                            <span>Sound Snap</span>
+                            <input id="soundSnap" type="file" accept="audio/*">
+                            <label for="soundSnap" style="color: #aaa; margin: 0;">
+                              snap.mp3
+                            </label>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <hr style="margin: 10px 0;">
+                    <li>
+                      <div
+                        style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px;">
+                        <span>Object Control</span>
+                        <div style="width: 30%; display: flex; justify-content: space-between; align-items: center;">
+                          <input id="objControl" type="checkbox" style="margin: 0;">
+                          <span id="objControlDropDown"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                      <ul id="objControlList" style="display: none; border-top: 1px solid #999;">
+                        <li>
+                          <a>
+                            <span>Angle</span>
+                            <input id="objAngle" type="number" value="0" min="0">
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <!-- c -->
+                <div class="group btn-group">
+                  <button id="close-editor-textbox-quiz" type="button" class="btn btn-link">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="pathBtns-camera" style="position: absolute; visibility: hidden; top: 120px; right: 10px;">
+          <button id="pathToggleDrawing-camera" type="button" class="btn btn-success"
+            style="width: fit-content; height: fit-content;"></button>
+          <button id="closePathDrawMode-camera" type="button" class="btn btn-danger"
+            style="width: fit-content; height: fit-content;">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+        <ul class="list" style="margin-top: 10px;"></ul>
+      </div>
+
+      <div id="videoChat" class="hidden" style="display: block;">
+        <div id="closeVideo"></div>
+        <div id="loading"></div>
+        <div id="video" style="width: 100%; height: 100%"></div>
+      </div>
+      <div id="yotubeVideo">
+        <div class="item-video hidden" id="video-1"
+          style="top: 50px;left: 100px;z-index: 100; width: 30%; height: 50%; background: #000; padding: 20px;">
+          <input class="ytb-close-btn" type="button" value="X"
+            style="color: red; position: absolute; right: 0; top: 0; font-size: 20px;">
+          <iframe id="ytbIframe" credentialless></iframe>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ..... -->
+  <div class="col-4 sb-right">
+    <div class="opacitySideMenu hidden" style="width: 422px">
+      <div class="opacitySideMenu-inner">
+        <div class="opactiyPercentage">
+          <p id="rangevalue"></p><span>%</span>
+        </div>
+        <div class="editBar">
+          <input type="range" class="slider" name="bgopacity" id="bgopacity" value="100" min="0" max="100" step="1" />
+        </div>
+        <!--			<div class="closeSideMenu">-->
+        <!--				<p class="phideSideMenu">-->
+        <!--					<img class="img-fluid fr hideSideMenu" src="-->
+        <!--assets\images\reveal\08_icon_Menu_Close.png" alt="close" />-->
+        <!--				</p>-->
+        <!--				<p>-->
+        <!--					<img class="img-fluid fr showSideMenu hidden" src="-->
+        <!--assets\images\reveal\09_icon_Menu_Open.png" alt="open" />-->
+        <!--				</p>-->
+      </div>
+    </div>
+    <!-- <p class="tit-head">Participants <span><span></p>
+                <div class="hidden-participant-btn">
+                    <img class="on" src="assets\images\video/12_icon_Side_Close.png" />
+                    <img class="off" src="assets\images\video/13_icon_Side_Open.png" />
+                </div>
+                <div class="hide-participant-line hidden"></div>
+            </div> -->
+
+    <div id="videoAndMic" class="hidden">
+      <div class="turnVideo hidden">
+        <p class="On_Video hidden">
+          <img src="assets\images\notepad\sidebar/Video_Chat_ON.png" />
+          <span>Video Is On</span>
+        </p>
+        <p class="Off_Video hidden">
+          <img src="assets\images\notepad\sidebar/Video_Chat_OFF.png" />
+          <span>Video Is Off</span>
+        </p>
+      </div>
+      <div class="turnMic hidden">
+        <p class="On_Mic hidden">
+          <img src="assets\images\notepad\sidebar/Video_Chat_ON.png" />
+          <span>Mic Is On</span>
+        </p>
+        <p class="Off_Mic hidden">
+          <img src="assets\images\notepad\sidebar/Video_Chat_OFF.png" />
+          <span>Mic Is Off</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="wrap-sidebar-left">
+      <div class="menu-tray show-both" style="overflow-y: scroll;">
+        <div style="width: 100%; height: 4px; background: inherit;"></div>
+        <a id="userListDropDown" data-toggle="none" style="cursor: pointer;">
+          <div
+            style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px; background-color: rgba(255,255,255,0.1);">
+            <span style="color: #fff;">Members</span>
+            <span id="userListIcon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+          </div>
+
+        </a>
+        <div id="userListContainer" class="attend-list style-scrollbar scroll"
+          style="display: block; height: fit-content; padding: 0; padding-top: 12px; max-height: 250px;">
+          <div class="row list_participants">
+            <ul id="userInfo">
+              <li>
+                <div class="user-item">
+                  <div class="lh35 fs20">Lấy quyền vẽ</div>
+                  <div>
+                    <button class="btn_openSearch"
+                      style="border: none; box-shadow: none; font-size: 25px; margin-right:30px">
+                      <i class="fa-solid fa-hand fs30 color-yellow" *ngIf="isCurrentlyDrawing" (click)="stopDrawing()"
+                        id="isCurrentlyDrawing"></i>
+                      <i class="fa-solid fa-hand fs30 color-green hidden" *ngIf="isRequestingDrawing"
+                        (click)="stopDrawing()" id="isRequestingDrawing"></i>
+                      <i class="fa-regular fa-hand fs30 color-green hidden" *ngIf="isNotDrawing"
+                        (click)="requestDrawing()" id="isNotDrawing"></i>
+                    </button>
+                    <button class="btn_openSearch" style="border: none; box-shadow: none;">
+                      <i class="fa-solid fa-square fs30 hidden" style="color: #183153;" id="haveNoDrawingPermission"
+                        (click)="toggleDrawingAllPermission(true)" *ngIf="!haveAllDrawingPermission()"></i>
+                      <i class="fa-solid fa-square-check fs30" style="color: #183153;" id="haveAllDrawingPermission"
+                        (click)="toggleDrawingAllPermission(false)" *ngIf="haveAllDrawingPermission()"></i>
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul id="listUsers">
+
+            </ul>
+            <div id="aria-notify-area"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div style="width: 100%; height: 2px; background: #000;"></div>
+
+        <div id="zoomCameraDropDown" data-toggle="none"
+          style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px; background-color: rgba(255,255,255,0.1);">
+          <span style="color: #fff;">Video</span>
+          <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+        </div>
+        <div id="zoomCameraContainer" class="attend-list style-scrollbar scroll"
+          style="display: none; height: fit-content; padding: 0; padding-top: 12px;">
+          <div class="attend-video-list"
+            style="display: block; padding: 0; padding-bottom: 8px; overflow: hidden; position: relative;">
+            <div id="meetingSDKElement" style="justify-content: center;"></div>
+            <button id="zoom-camera-expand">
+              <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div style="width: 100%; height: 2px; background: #000;"></div>
+
+        <div id="zoomChatDropDown" data-toggle="none"
+          style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px; background-color: rgba(255,255,255,0.1); overflow: hidden;">
+          <span style="color: #fff;">Chat</span>
+          <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+        </div>
+        <div id="zoomChatContainer" class="attend-list style-scrollbar"
+          style="display: none; height: fit-content; padding: 0; position: relative; padding-top: 12px;">
+          <div id="meetingSDKChatElement"></div>
+
+          <!-- <textarea id="test-chat" name="" id="" cols="30" rows="10"></textarea>
+              <span class="zoom-chat-btn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></span> -->
+        </div>
+
+        <div id="ObjectViewDropDown" data-toggle="none"
+          style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px; background-color: rgba(255,255,255,0.1); overflow: hidden;">
+          <span style="color: #fff;">Object View</span>
+          <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+        </div>
+        <div>
+          <table style="border-collapse: collapse; width: 100%; margin-top: 20px;">
+            <thead>
+              <tr style="background-color: black; color: white;">
+                <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">ID</th>
+                <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">ObjectName</th>
+                <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">Quiz/Answer</th>
+                <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">Result</th>
+              </tr>
+            </thead>
+            <tbody id="object-view-table-body">
+              <!-- <tr>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">1</td>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Object 1</td>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Question 1 / Answer 1</td>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Pass</td>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Title 1</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">2</td>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Object 2</td>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Question 2 / Answer 2</td>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Fail</td>
+                        <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Title 2</td>
+                    </tr> -->
+              <!-- Thêm các hàng khác nếu cần -->
+            </tbody>
+          </table>
+        </div>
+
+
+        <div id="ResultViewDropDown" data-toggle="none"
+          style="display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 6px; background-color: rgba(255,255,255,0.1); overflow: hidden;">
+          <span style="color: #fff;">Result View</span>
+          <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+        </div>
+        <div>
+          <table style="border-collapse: collapse; width: 100%; margin-top: 20px;">
+            <thead>
+              <tr style="background-color: black; color: white;">
+                <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">ID</th>
+                <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">ObjectName</th>
+                <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">Quiz/Answer</th>
+                <th style="border: 1px solid #dddddd; padding: 8px; text-align: left;">Result</th>
+              </tr>
+            </thead>
+            <tbody id="result-view-table-body">
+              <!-- <tr>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">1</td>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Object 1</td>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Question 1 / Answer 1</td>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Pass</td>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Title 1</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">2</td>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Object 2</td>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Question 2 / Answer 2</td>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Fail</td>
+                      <td style="border: 1px solid #dddddd; padding: 8px; background-color: #ffffff;">Title 2</td>
+                  </tr> -->
+              <!-- Thêm các hàng khác nếu cần -->
+            </tbody>
+          </table>
+        </div>
+
+
+
+      </div>
+
+      <!-- <div class="chat_box" style="display: block;">
+              <div class="ui-resizable-handle ui-resizable-n"></div>
+              <div id="chat" class="message-list">
+                <ul id="testichat" class="inbox-message"></ul>
+              </div>
+              <div class="start-tutoring">
+                <span>
+                  Start Tutoring
+                </span>
+              </div>
+              <div class="message-send">
+                <div class="float-left message-input" style="visibility: hidden;">
+                  <input type="text" id="scrivi" rows="1" name="message-input" placeholder="Type Your Message Here..." />
+                  <input type="hidden" id="emoji" name="emoji" value="default" />
+                </div>
+
+                <div class="status-selector-bar" style="display: none; " id="hihihi">
+                  <ul>
+                    <li class="ic-fast" data-type="fast">
+                      <p>Too Fast</p>
+                      <img src="assets\images\notepad\sidebar\Status_TooFast.png" />
+                    </li>
+                    <li class="ic-confused" data-type="confused">
+                      <p>Confused</p>
+                      <img src="assets\images\notepad\sidebar\Status_Confused.png" />
+                    </li>
+                    <li class="ic-understand" data-type="understand">
+                      <p>Good</p>
+                      <img src="assets\images\notepad\sidebar\Status_Good.png" />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div> -->
+    </div>
+    <div class="button-send center">
+      <div id="btn-send" style="WIDTH: 45px !IMPORTANT;">
+        <img src="assets\images\video\16_icon_Chat_Enter_Arrow.png" alt="Hide" />
+      </div>
+      <div class="status-selector" id="hahhhha" style="display: none;">
+        <img src="assets\images\video/15_Icon_Status_Default.png" />
+      </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+  <!-- <div class="popUpBtn">
+        <p>
+            <img class="fl img-fluid clickToHideBottom" src="assets/images/video/08_icon_Bottom_Close.png"
+                 alt="Hide" />
+        </p>
+        <p>
+            <img class="fl img-fluid clickToShowBottom" src="assets/images/video/09_icon_Bottom_Open.png"
+                 alt="Show" />
+        </p>
+    </div>
+    <div class="end-notepad">
+        <p>
+            <img class="" src="assets/images/video/17_icon_Active_Close.png" />
+        </p>
+    </div> -->
+
+  <!-- VIDEO MODE -->
+  <div class="video-mode-content">
+    <div class="video-mode-content-inner">
+      <ul>
+        <li class="sl">
+          <span class="img">
+            <img src="assets/images/video/20_icon_Video_SLIDE.png" />
+          </span>
+          <span class="txt">
+            Slide
+          </span>
+        </li>
+        <li class="fs">
+          <span class="img">
+            <img src="assets/images/video/21_icon_Video_FULLSCREEN.png" />
+          </span>
+          <span class="txt">
+            Full Screen
+          </span>
+        </li>
+        <li class="noac">
+          <span class="img">
+            <img src="assets/images/video/22_icon_Video_ACTIVE_disable.png" />
+          </span>
+          <span class="txt">
+            Active Speaker
+          </span>
+        </li>
+        <li class="cl noac">
+          <span class="img">
+            <img src="assets/images/video/23_icon_Video_CLOSE_disable.png" />
+          </span>
+          <span class="txt">
+            Close Video
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- NOTEPAD SHEET -->
+  <div class="w-list hidden notepad-sheet-search">
+    <div class="w-list-inner">
+      <div class="wls-close">
+        <span>
+          <img src="assets/images/worksheet/Search_Close.png" />
+        </span>
+      </div>
+      <h3 class="w-list-title">
+        List of Worksheets
+      </h3>
+      <div class="w-list-searchbox">
+        <div class="wls-inner">
+          <div class="wls-ctn">
+            <input type="text" placeholder="Type Worksheet Name" />
+            <i class="wls-open-subject-list"></i>
+            <div class="wls-subject-list">
+              <ul>
+                <li data-value="" class="active">All Subjects</li>
+                <li data-value="26">
+                  English: Conversation for Foreign Students
+                </li>
+                <li data-value="27">
+                  English: Writing
+                </li>
+                <li data-value="28">
+                  English: Reading Comprehension
+                </li>
+                <li data-value="29">
+                  English: Others
+                </li>
+                <li data-value="30">
+                  Math: Elementary
+                </li>
+                <li data-value="31">
+                  Math: Middle School
+                </li>
+                <li data-value="32">
+                  Math: High School
+                </li>
+                <li data-value="33">
+                  Math: Advanced
+                </li>
+                <li data-value="34">
+                  Math: Others
+                </li>
+                <li data-value="35">
+                  Science: Elementary/Middle School
+                </li>
+                <li data-value="36">
+                  Science: High School
+                </li>
+                <li data-value="37">
+                  Science: Chemistry for High School
+                </li>
+                <li data-value="38">
+                  Science: Others
+                </li>
+              </ul>
+            </div>
+            <div class="wls-type" data-state="all">
+              <span>
+                <img src="assets/images/worksheet/Search_Type_ALL.png" />
+              </span>
+            </div>
+          </div>
+          <button class="wls-btn">
+            Search
+          </button>
+        </div>
+      </div>
+      <div class="w-list-listworksheet">
+        <div class="w-list-row">
+          <ul class="wlr-label">
+            <li>
+              <span>
+                Name
+              </span>
+            </li>
+            <li>
+              <span>
+                Type
+              </span>
+            </li>
+          </ul>
+          <div class="wlr-content">
+            <div class="wlr-content-list">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ZOOM SHEET -->
+  <div class="w-list hidden notepad-sheet-search" id="zoom-list">
+    <div class="w-list-inner">
+      <div class="wls-close" id="zoom-close">
+        <span>
+          <img src="assets/images/worksheet/Search_Close.png" />
+        </span>
+      </div>
+      <h3 class="w-list-title">
+        List of Tutor Sessions
+      </h3>
+      <div class="w-list-listworksheet">
+        <div class="w-list-row">
+          <ul class="wlr-label">
+            <li>
+              <span>
+                Name
+              </span>
+            </li>
+            <li>
+              <span>
+                Type
+              </span>
+            </li>
+          </ul>
+          <div class="wlr-content">
+            <div class="wlr-content-list">
+              <ul class="list-tutor-schedule">
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- form zoom meeting -->
+  <!-- <div id="zoom-modal" class="modal" style="display: block;">
+        <div class="modal-content animate" style="top: 10%;">
+          <span onclick="document.getElementById('zoom-modal').style.display ='none'" class="close-login login-hover" title="Close PopUp">&times;</span>
+          <div class="zoom-container">
+            
+
+          </div>
+          <div style="text-align: right;">
+            <button id="btn_join_zoom" type="submit">Join Meeting</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  <!-- QUIZ MODAL -->
+  <div id="quiz-modal" class="modal" style="z-index: 1000;">
+    <div class="modal-content animate" style="top: 5%; padding-bottom: 0 !important; width: 40%;">
+      <div class="modal-header">
+        <h4 class="modal-title" style="display: inline-block;">Quiz</h4>
+        <button type="button" class="close-quiz-modal close" style="margin-right: 20px;">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul style="padding-left: 20px; list-style-type: disc;">
+          <li>
+            <div style="padding: 6px 20px 6px 0;">
+              <p>Text Array</p>
+              <textarea id="question-input" style="margin-top: 10px;"></textarea>
+
+            </div>
+          </li>
+          <li>
+            <div class="input-item">
+              <p>Text Color</p>
+              <input type="color" name="textColor" id="quiz-textColor" value="#000000">
+            </div>
+          </li>
+          <li>
+            <div class="input-item">
+              <p>Background color</p>
+              <input type="color" name="bgColor" id="quiz-bgColor" value="#ffffff">
+            </div>
+          </li>
+          <li>
+            <div class="input-item">
+              <p>Text Select</p>
+              <input type="color" name="textSelectColor" id="quiz-textSelectColor" value="#000000">
+            </div>
+          </li>
+          <li>
+            <div class="input-item">
+              <p>Background Select</p>
+              <input type="color" name="bgSelectColor" id="quiz-bgSelectColor" value="#ffffff">
+            </div>
+          </li>
+          <li>
+            <div class="input-container input-item">
+              <p>Sound Selected</p>
+              <input id="quiz-soundSelected" type="file" accept="audio/*">
+              <label for="quiz-soundSelected" style="color: #aaa; margin: 0;">
+                select.mp3
+              </label>
+            </div>
+          </li>
+          <li>
+            <div class="input-container input-item">
+              <p>Sound Check</p>
+              <input id="quiz-soundCheck" type="file" accept="audio/*">
+              <label for="quiz-soundCheck" style="color: #aaa; margin: 0;">
+                check.mp3
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button id="question-submit" type="button" class="btn btn-primary">Create Quiz</button>
+        <button type="button" class="close-quiz-modal btn btn-default">Close</button>
+      </div>
+    </div>
+  </div>
+  <div id="single-choose-modal" class="modal" style="z-index: 1000;">
+    <div class="modal-content animate" style="top: 5%; padding-bottom: 0 !important; width: 40%;">
+      <div class="modal-header">
+        <h4 class="modal-title" style="display: inline-block;">Quiz</h4>
+        <button type="button" class="close-single-choose-modal close" style="margin-right: 20px;">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul style="padding-left: 20px; list-style-type: disc;">
+          <li>
+            <div style="padding: 6px 20px 6px 0;">
+              <p>Question</p>
+              <textarea id="question-input" style="margin-top: 10px;"></textarea>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p>Answer Options</p>
+              <div id="answer-options-single-choose-container">
+                <!-- Option input fields will be added dynamically here -->
+              </div>
+              <button id="add-option-single-choose" type="button" class="btn btn-default">Add Option</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button id="question-submit" type="button" class="btn btn-primary">Create Quiz</button>
+        <button type="button" class="close-single-choose-modal btn btn-default">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="wrapper-bg"></div>
+
+  <div id="loading-modal" class="hidden">
+    <div id="overlay">
+      <div id="loading-btn">
+        <div class="loading-per"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="zoom-status" class="hidden">1.0x</div>
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      //khai báo các biến cần dùng
+      var btn = document.querySelector('.btn'),
+        list_menu = document.querySelector('.list-group'),
+        outside = document.querySelector('.outside'),
+        cover = document.querySelector('.menu');
+
+      btn.onclick = function () {
+        outside.classList.add('ShowUp');
+        cover.classList.add('appear-menu');
+      }
+      outside.onclick = function () {
+        outside.classList.remove('ShowUp');
+        cover.classList.remove('appear-menu');
+      }
+
+
+      var tilemenu = document.getElementsByClassName('dropdown-toggle'),
+        sbmenu = document.getElementsByClassName('dropdown-menu-a');
+      for (var i = 0; i < tilemenu.length; i++) {
+        tilemenu[i].onclick = function () {
+
+
+          if (this.classList[1] == 'dropdown-toggle-color') { // click vào cái đã hiện thị rồi
+
+            this.classList.remove('dropdown-toggle-color');
+
+            // 3 dòng dưới là cho  các đối tưởng được click ẩn đi
+            var showsubmenu = this.getAttribute('data-toggle'),
+              show_elment = document.getElementById(showsubmenu);
+            show_elment.classList.remove('show-dropdown-menu');
+          } else { // click vào các cái còn lại
+
+            // cho all bỏ màu chữ của class dropdown-toggle
+            for (var k = 0; k < tilemenu.length; k++) {
+              tilemenu[k].classList.remove('dropdown-toggle-color');
+            }
+            this.classList.toggle('dropdown-toggle-color');
+
+            // lấy về data-toggle
+            var showsubmenu = this.getAttribute('data-toggle'),
+              show_elment = document.getElementById(showsubmenu);
+
+            // cho all cac class dropdown-menu-a khác ẩn đi
+            for (var i = 0; i < sbmenu.length; i++) {
+              sbmenu[i].classList.remove('show-dropdown-menu')
+            }
+
+            // cho  các đối tưởng được click hiện ra
+            show_elment?.classList.toggle('show-dropdown-menu');
+          }
+        }
+      }
+    }, false)
+  </script>
+  <!-- For Component and Client View -->
+  <script src="https://source.zoom.us/2.8.0/lib/vendor/react.min.js"></script>
+  <script src="https://source.zoom.us/2.8.0/lib/vendor/react-dom.min.js"></script>
+  <script src="https://source.zoom.us/2.8.0/lib/vendor/redux.min.js"></script>
+  <script src="https://source.zoom.us/2.8.0/lib/vendor/redux-thunk.min.js"></script>
+  <script src="https://source.zoom.us/2.8.0/lib/vendor/lodash.min.js"></script>
+  <!-- For Client View -->
+  <!-- <script src="https://source.zoom.us/zoom-meeting-2.8.0.min.js"></script> -->
+
+  <!-- For Component View -->
+  <script src="https://source.zoom.us/2.8.0/zoom-meeting-embedded-2.8.0.min.js"></script>
+  <script type='text/javascript' src='js/jquery/ui/core.min.js'></script>
+  <script type='text/javascript' src='js/jquery/ui/widget.min.js'></script>
+  <script type='text/javascript' src='js/jquery/ui/mouse.min.js'></script>
+  <script type='text/javascript' src='js/jquery/ui/draggable.min.js'></script>
+  <script type='text/javascript' src='js/jquery/ui/resizable.min.js'></script>
+  <script type='text/javascript'>
+    /* <![CDATA[ */
+    var mejsL10n = {
+      "language": "en-US",
+      "strings": {
+        "Close": "Close",
+        "Fullscreen": "Fullscreen",
+        "Download File": "Download File",
+        "Download Video": "Download Video",
+        "Play\/Pause": "Play\/Pause",
+        "Mute Toggle": "Mute Toggle",
+        "None": "None",
+        "Turn off Fullscreen": "Turn off Fullscreen",
+        "Go Fullscreen": "Go Fullscreen",
+        "Unmute": "Unmute",
+        "Mute": "Mute",
+        "Captions\/Subtitles": "Captions\/Subtitles"
+      }
+    };
+    var _wpmejsSettings = {
+      "pluginPath": "\/notepad\/wp-includes\/js\/mediaelement\/"
+    };
+    /* ]]> */
+  </script>
+  <script type='text/javascript' src='js/mediaelement/mediaelement-and-player.min.js'></script>
+  <script type='text/javascript' src='js/mediaelement/wp-mediaelement.js'></script>
+  <script type='text/javascript' src='assets/js/vendor/touch-punch.min.js'></script>
+  <script type='text/javascript' src='assets/js/vendor/customscrollbar.min.js'></script>
+  <script type='text/javascript' src='assets/js/vendor/jquery.countdown.js'></script>
+  <script type='text/javascript' src='assets/js/vendor/editor.js'></script>
+  <script type='text/javascript' src='assets/js/vendor/jquery.selectBoxIt.min.js'></script>
+  <script type='text/javascript' src='assets/js/vendor/html2canvas.min.js'></script>
+  <script type='text/javascript'>
+    /* <![CDATA[ */
+    var iii_script = {
+      "site_url": "http:\/\/localhost\/notepad\/",
+      "plugin_url": "http:\/\/localhost\/notepad\/wp-content\/plugins\/iii-notepad\/",
+      "ajax_url": "http:\/\/localhost\/notepad\/wp-admin\/admin-ajax.php",
+      "buy_time_fail": "You dont have enough point to buy time",
+      "buy_time_done": "You buy time done",
+      "empty_video_url": "Please enter video url",
+      "empty_layer": "Please chosen layer",
+      "points": " points"
+    };
+    var iii_variable = {
+      "time_ranger": "1800"
+    };
+    /* ]]> */
+  </script>
+  <script src="js/semantic.js"></script>
+  <!-- <script src="js/socket.io.js"></script> -->
+
+  <script src="https://unpkg.com/fabric@latest/dist/fabric.js" crossorigin></script>
+  <!-- <script type='text/javascript' src='assets/js/fabric-touch.js'></script> -->
+  <script src="js/shapes.fabric.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+    integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type='text/javascript' src='assets/js/classes.js'></script>
+  <script type='module' src='assets/js/notepad.js'></script>
+  <!-- <script type='text/javascript' src='assets/js/zoom.js'></script> -->
+  <!-- <script type='text/javascript' src='assets/js/EduClass.js'></script> -->
+  <script type="module" src="your-script.js"></script>
+
+</body>
